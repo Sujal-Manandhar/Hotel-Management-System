@@ -194,7 +194,7 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   margin: 0;
-  padding-top: 60px; /* Offset for fixed navbar */
+  padding-top: 70px; /* Exact offset for fixed navbar */
   overflow-x: hidden;
 }
 
@@ -229,15 +229,20 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Override Bootstrap Navbar */
 .navbar-inverse {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: rgba(15, 23, 42, 0.6) !important; /* Slightly more opaque blue-tint for better integration */
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   border: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 70px !important;
   padding: 5px 0 !important;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999 !important;
 }
 
 .navbar-inverse .navbar-brand {

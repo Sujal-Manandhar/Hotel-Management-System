@@ -13,18 +13,19 @@ include('connection.php');
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="css/style.css" rel="stylesheet"/>
+  <meta name="description" content="Read the latest news, travel tips, and luxury hospitality stories from the Crown Hotel blog. Stay updated with our hospitality insights.">
 </head>
 <body>
   <?php include('Menu Bar.php'); ?>
 
-  <div class="container" style="margin-top:120px;">
+  <div class="container" style="margin-top:40px;">
     <h1 class="text-center">Our <span style="color:var(--accent-color)">Blog</span></h1>
     <p class="text-center text-secondary">Discover the latest stories, travel tips, and updates from Crown Hotel.</p>
     <hr><br>
 
     <div class="row">
       <!-- Blog Post 1 -->
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <div class="glass-panel">
           <img src="https://images.unsplash.com/photo-1542314831-c53cd3816002?w=800&q=80" class="img-responsive" style="border-radius:15px; margin-bottom:20px;" alt="Hotel Blog">
           <h3>The Art of Fine Dining at Crown Hotel</h3>
@@ -35,7 +36,7 @@ include('connection.php');
       </div>
 
       <!-- Blog Post 2 -->
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <div class="glass-panel">
           <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80" class="img-responsive" style="border-radius:15px; margin-bottom:20px;" alt="Hotel Blog">
           <h3>5 Tips for a Perfectly Relaxing Weekend</h3>
@@ -48,7 +49,7 @@ include('connection.php');
 
     <div class="row">
       <!-- Blog Post 3 -->
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <div class="glass-panel">
           <img src="https://images.unsplash.com/photo-1551882547-ff40c0d5bf8f?w=800&q=80" class="img-responsive" style="border-radius:15px; margin-bottom:20px;" alt="Hotel Blog">
           <h3>Behind the Scenes: Our Commitment to Sustainability</h3>
@@ -59,7 +60,7 @@ include('connection.php');
       </div>
 
       <!-- Blog Post 4 -->
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <div class="glass-panel">
           <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" class="img-responsive" style="border-radius:15px; margin-bottom:20px;" alt="Hotel Blog">
           <h3>Planning the Perfect Destination Wedding</h3>

@@ -13,8 +13,10 @@ include 'connection.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="css/style.css" rel="stylesheet"/>
+  <meta name="description" content="Welcome to Crown Hotel - Experience luxury and comfort at our premier destination. Book your stay today for an unforgettable experience with world-class amenities.">
+  <meta name="keywords" content="Hotel, Luxury Stay, Crown Hotel, Room Booking, Vacation, Travel">
 </head> <!--Head Open  Here-->
-<body style="margin-top:50px;">
+<body>
   <?php
       include('Menu Bar.php')
   ?>
@@ -89,7 +91,7 @@ include 'connection.php';
 	{
 	?>
 	<div class="col-sm-4">
-      <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>"><img src="image/rooms/<?php echo $r_res['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img-->
+      <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>"><img src="image/rooms/<?php echo $r_res['image']; ?>" class="img-responsive thumbnail" alt="<?php echo $r_res['type']; ?> at Crown Hotel">
       <h4 class="Room_Text"><?php echo $r_res['type']; ?></h4>
       <p class="text-justify"><?php echo substr($r_res['details'],0,100); ?></p><br>
   </a>

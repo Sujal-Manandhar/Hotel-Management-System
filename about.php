@@ -10,8 +10,9 @@
   <link href="css/style.css"rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="description" content="Learn more about Crown Hotel - A premier 4-star luxury hotel in Nepal offering world-class hospitality and stunning mountain views.">
 </head>
-<body style="margin-top:50px;">
+<body>
 <?php
       include('Menu Bar.php')
   ?><br>

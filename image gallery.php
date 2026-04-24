@@ -9,8 +9,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="css/style.css"rel="stylesheet"/>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="description" content="Explore our luxury rooms, suites, and facilities through our curated image gallery. See why Crown Hotel is the perfect choice for your stay.">
 </head> <!--Head Open  Here-->
-<body style="margin-top:50px;"> 
+<body> 
   <?php
       include('Menu Bar.php')
   ?>
