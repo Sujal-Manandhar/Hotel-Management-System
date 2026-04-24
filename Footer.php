@@ -46,6 +46,16 @@
   </div>
 </footer>
 
+<!-- Floating Navigation Buttons -->
+<div class="floating-nav">
+  <div class="nav-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Go to Top">
+    <i class="fa fa-chevron-up"></i>
+  </div>
+  <div class="nav-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" title="Go to Bottom">
+    <i class="fa fa-chevron-down"></i>
+  </div>
+</div>
+
 <?php 
 if(isset($_POST['send']))
 {

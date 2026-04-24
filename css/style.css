@@ -445,3 +445,49 @@ h1 {
   font-size: 0.9em;
   margin-top: 5px;
 }
+
+/* Floating Navigation Buttons */
+.floating-nav {
+  position: fixed;
+  right: 30px;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 10000;
+}
+
+.nav-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2em;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.nav-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+}
+
+@media (max-width: 768px) {
+  .floating-nav {
+    right: 15px;
+    bottom: 30px;
+  }
+  .nav-btn {
+    width: 45px;
+    height: 45px;
+  }
+}
