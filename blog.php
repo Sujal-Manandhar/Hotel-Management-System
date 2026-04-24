@@ -20,42 +20,59 @@ include('connection.php');
 
   <div class="container" style="margin-top:40px;">
     <div class="text-center">
-      <h1 style="font-size: 3.5em; margin-bottom: 10px;">Our <span style="color:var(--accent-color)">Blog</span></h1>
-      <p style="color:var(--text-secondary); font-size: 1.2em; max-width: 600px; margin: 0 auto 40px auto;">Insights and stories from the heart of luxury hospitality.</p>
+      <h1 style="font-size: 3.5em; margin-bottom: 10px;">The <span style="color:var(--accent-color)">Editorial</span></h1>
+      <p style="color:var(--text-secondary); font-size: 1.2em; max-width: 600px; margin: 0 auto 60px auto;">Curated stories from the world of luxury hospitality and travel.</p>
     </div>
 
+    <!-- Blog List Container -->
     <div class="row">
-      <!-- Blog Post 1 -->
-      <div class="col-md-4 col-sm-6">
-        <div class="glass-panel" style="padding: 20px;">
-          <img src="https://images.unsplash.com/photo-1542314831-c53cd3816002?w=800&q=80" class="img-responsive" style="border-radius:15px; margin-bottom:20px; height: 220px; width: 100%; object-fit: cover;" alt="The Art of Fine Dining">
-          <p class="text-muted" style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Hospitality | 5 min read</p>
-          <h3 style="font-size: 1.4em; line-height: 1.3; margin-bottom: 15px; min-height: 3.6em;">The Art of Fine Dining at Crown Hotel</h3>
-          <p class="text-justify" style="font-size: 0.95em; color: var(--text-secondary); margin-bottom: 20px;">Explore the culinary wonders of our world-class kitchen. From locally sourced ingredients to exquisite presentation...</p>
-          <a href="#" class="btn btn-primary btn-sm">Read Article</a>
-        </div>
-      </div>
+      <div class="col-md-10 col-md-offset-1">
+        
+        <!-- Blog Post 1 -->
+        <article class="blog-list-item">
+          <div class="blog-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1542314831-c53cd3816002?w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;" alt="The Art of Fine Dining">
+          </div>
+          <div class="blog-content-wrapper">
+            <p class="text-muted" style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Hospitality | 5 min read</p>
+            <h2 style="font-size: 2em; margin-bottom: 20px; color: var(--text-primary);">The Art of Fine Dining at Crown Hotel</h2>
+            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 30px;">Explore the culinary wonders of our world-class kitchen. From locally sourced ingredients to exquisite presentation, our chefs are dedicated to creating an unforgettable gastronomic journey for every guest...</p>
+            <div>
+              <a href="#" class="btn btn-primary">Read Full Story</a>
+            </div>
+          </div>
+        </article>
 
-      <!-- Blog Post 2 -->
-      <div class="col-md-4 col-sm-6">
-        <div class="glass-panel" style="padding: 20px;">
-          <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80" class="img-responsive" style="border-radius:15px; margin-bottom:20px; height: 220px; width: 100%; object-fit: cover;" alt="Relaxing Weekend Tips">
-          <p class="text-muted" style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Wellness | 4 min read</p>
-          <h3 style="font-size: 1.4em; line-height: 1.3; margin-bottom: 15px; min-height: 3.6em;">5 Tips for a Perfectly Relaxing Weekend</h3>
-          <p class="text-justify" style="font-size: 0.95em; color: var(--text-secondary); margin-bottom: 20px;">Modern life can be hectic, but your stay at Crown Hotel doesn't have to be. We've compiled the ultimate guide...</p>
-          <a href="#" class="btn btn-primary btn-sm">Read Article</a>
-        </div>
-      </div>
+        <!-- Blog Post 2 -->
+        <article class="blog-list-item">
+          <div class="blog-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;" alt="Relaxing Weekend Tips">
+          </div>
+          <div class="blog-content-wrapper">
+            <p class="text-muted" style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Wellness | 4 min read</p>
+            <h2 style="font-size: 2em; margin-bottom: 20px; color: var(--text-primary);">5 Tips for a Perfectly Relaxing Weekend</h2>
+            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 30px;">Modern life can be hectic, but your stay at Crown Hotel doesn't have to be. We've compiled the ultimate guide to unwinding in our spa, finding true serenity during your stay...</p>
+            <div>
+              <a href="#" class="btn btn-primary">Read Full Story</a>
+            </div>
+          </div>
+        </article>
 
-      <!-- Blog Post 3 -->
-      <div class="col-md-4 col-sm-6">
-        <div class="glass-panel" style="padding: 20px;">
-          <img src="https://images.unsplash.com/photo-1551882547-ff40c0d5bf8f?w=800&q=80" class="img-responsive" style="border-radius:15px; margin-bottom:20px; height: 220px; width: 100%; object-fit: cover;" alt="Sustainability in Hospitality">
-          <p class="text-muted" style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Eco-Friendly | 6 min read</p>
-          <h3 style="font-size: 1.4em; line-height: 1.3; margin-bottom: 15px; min-height: 3.6em;">Our Commitment to Sustainability</h3>
-          <p class="text-justify" style="font-size: 0.95em; color: var(--text-secondary); margin-bottom: 20px;">At Crown Hotel, we believe luxury should be responsible. Learn about our new solar initiative and kitchen policies...</p>
-          <a href="#" class="btn btn-primary btn-sm">Read Article</a>
-        </div>
+        <!-- Blog Post 3 -->
+        <article class="blog-list-item">
+          <div class="blog-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c0d5bf8f?w=800&q=80" style="width: 100%; height: 100%; object-fit: cover;" alt="Sustainability">
+          </div>
+          <div class="blog-content-wrapper">
+            <p class="text-muted" style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Eco-Friendly | 6 min read</p>
+            <h2 style="font-size: 2em; margin-bottom: 20px; color: var(--text-primary);">Our Commitment to Sustainability</h2>
+            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 30px;">At Crown Hotel, we believe luxury should be responsible. Learn about our new solar initiative, zero-waste kitchen policies, and how we're working to preserve the beautiful environment...</p>
+            <div>
+              <a href="#" class="btn btn-primary">Read Full Story</a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </div>

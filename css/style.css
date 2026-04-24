@@ -177,15 +177,15 @@ h1 {
 }@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap');
 
 :root {
-  --primary-color: #6366f1;
-  --primary-hover: #4f46e5;
-  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --accent-color: #ec4899;
+  --primary-color: #c5a059; /* Luxury Gold */
+  --primary-hover: #b38e44;
+  --bg-gradient: linear-gradient(135deg, #0a0e17 0%, #161b22 100%);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
+  --text-primary: #f0f2f5;
+  --text-secondary: #9ea7b3;
+  --accent-color: #c5a059;
 }
 
 body {
@@ -334,12 +334,12 @@ h1 {
 }
 
 .carousel-caption {
-  bottom: 20%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  bottom: 25%;
+  background: rgba(10, 14, 23, 0.6);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 /* Custom Table Styles */
@@ -445,6 +445,46 @@ h1 {
 
 hr {
   border-color: rgba(255,255,255,0.1);
+}
+
+/* Luxury Blog List Layout */
+.blog-list-item {
+  display: flex;
+  margin-bottom: 40px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.blog-list-item:hover {
+  transform: translateX(10px);
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.blog-image-wrapper {
+  flex: 0 0 40%;
+  max-width: 400px;
+}
+
+.blog-content-wrapper {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .blog-list-item {
+    flex-direction: column;
+  }
+  .blog-image-wrapper {
+    flex: none;
+    max-width: 100%;
+  }
 }
 
 /* Feedback Panel Styling */
