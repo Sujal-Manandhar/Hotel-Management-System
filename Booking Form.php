@@ -56,10 +56,9 @@ if (isset($_POST['savedata'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body style="margin-top:50px;">
-    <?php
-  include('Menu Bar.php');
-  ?>
+<body>
+<?php include('Menu Bar.php'); ?>
+
     <div class="container-fluid text-center" id="primary">
         <!--Primary Id-->
         <h1>[ BOOKING Form ]</h1><br>
@@ -209,9 +208,7 @@ if (isset($_POST['savedata'])) {
         </div>
     </div>
     </div>
-    <?php
-include('Footer.php')
-?>
+<?php include('Footer.php'); ?>
 </body>
 
 </html>

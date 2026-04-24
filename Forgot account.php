@@ -28,10 +28,9 @@ if(isset($submit))
   <link href="css/style.css"rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body style="margin-top:50px;">
-<?php
-include('Menu Bar.php')
-?>
+<body>
+<?php include('Menu Bar.php'); ?>
+
 <div class="container-fluid"id="primary"> <!-- Primary Id-->
   <div class="container">
     <div class="row">
@@ -51,8 +50,6 @@ include('Menu Bar.php')
   </div>
 </div>
 
-<?php
-include('Footer.php')
-?>
+<?php include('Footer.php'); ?>
 </body>
 </html>

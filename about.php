@@ -13,9 +13,8 @@
   <meta name="description" content="Learn more about Crown Hotel - A premier 4-star luxury hotel in Nepal offering world-class hospitality and stunning mountain views.">
 </head>
 <body>
-<?php
-      include('Menu Bar.php')
-  ?><br>
+<?php include('Menu Bar.php'); ?>
+
 <div class="container-fluid text-center">
 <div class="container"> 
   <div class="row content">
@@ -69,8 +68,6 @@
   </div><br><br>
 </div>
 </div>
-<?php
-  include('Footer.php')
-?>
+<?php include('Footer.php'); ?>
 </body>
 </html>

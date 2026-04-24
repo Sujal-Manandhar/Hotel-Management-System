@@ -46,11 +46,10 @@ if(isset($_POST['save']))
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai" rel="stylesheet">
 </head>
-<body style="margin-top:50px;">
-  <?php 
-include('Menu Bar.php');
-  ?>
-<div class="container-fluid"style="background-color:#4286f4;color:#000;"> <!-- Primary Id-->
+<body>
+<?php include('Menu Bar.php'); ?>
+
+<div class="container-fluid"> <!-- Primary Id-->
   <div class="container">
     <div class="row">
       <center><h1 style="background-color:#ed2553; border-radius:50px;display:inline-block;"><b><font color="#080808">Create New Account?</font></b></h1></center>
@@ -141,8 +140,6 @@ include('Menu Bar.php');
     </div>
   </div>
 </div>
-<?php
-    include('Footer.php')
-?>
+<?php include('Footer.php'); ?>
 </body>
 </html>

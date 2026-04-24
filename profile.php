@@ -31,10 +31,9 @@ if(isset($_POST['update']))
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai" rel="stylesheet">
 </head>
-<body style="margin-top:50px;">
-  <?php
-  include('Menu Bar.php');
-  ?>
+<body>
+<?php include('Menu Bar.php'); ?>
+
  <?php
      $sql= mysqli_query($con,"select * from create_account where email='$eid' "); 
      $result=mysqli_fetch_assoc($sql);
@@ -111,8 +110,6 @@ if(isset($_POST['update']))
       </div>
    </div>
  </div>
-<?php
-include('Footer.php')
-?>
+<?php include('Footer.php'); ?>
 </body>
 </html>

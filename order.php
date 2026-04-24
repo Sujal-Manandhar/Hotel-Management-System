@@ -17,10 +17,9 @@ $eid=$_SESSION['create_account_logged_in'];
  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body style="margin-top:50px;">
-  <?php
-  include('Menu Bar.php');
-  ?>
+<body>
+<?php include('Menu Bar.php'); ?>
+
 <div class="container-fluid"><!--Primary Id-->
   <h1 class="text-center text-primary">[ Booking Details ]</h1><br>
   <div class="container">
@@ -67,8 +66,6 @@ echo "</tr>";
     </div>
     </div>
   </div>
-<?php
-include('Footer.php')
-?>
+<?php include('Footer.php'); ?>
 </body>
 </html>

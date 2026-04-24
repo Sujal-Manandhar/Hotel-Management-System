@@ -11,10 +11,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 </head>
-<body style="margin-top:50px;">
-	<?php
-      include('Menu Bar.php')
-  ?><br><br><br>
+<body>
+<?php include('Menu Bar.php'); ?>
+
 	<div class="container-fluid"style="margin-top:2%;">
 		<div class="continer">
 			<div class="row">
@@ -65,8 +64,6 @@ $res=mysqli_fetch_assoc($sql);
 			</div>
 		</div>
 	</div>
-  <?php
-      include('footer.php')
-  ?>
+  <?php include('Footer.php'); ?>
 </body>
 </html>

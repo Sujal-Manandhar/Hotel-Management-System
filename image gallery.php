@@ -12,9 +12,7 @@
   <meta name="description" content="Explore our luxury rooms, suites, and facilities through our curated image gallery. See why Crown Hotel is the perfect choice for your stay.">
 </head> <!--Head Open  Here-->
 <body> 
-  <?php
-      include('Menu Bar.php')
-  ?>
+  <?php include('Menu Bar.php'); ?>
 <div class="container">
   <h2>Image Gallery</h2>
   <div class="row">
@@ -90,9 +88,7 @@
     </div>
   </div>
 </div>
-<?php
-  include('Footer.php')
-?>
+<?php include('Footer.php'); ?>
 </body>
 </html>
 
