@@ -43,9 +43,7 @@ include 'connection.php';
 		?>
 	  <div class="item active">
         <img src="<?php echo $path; ?>" alt="Image">
-        <div class="carousel-caption">
-			<h2><?php echo $slider_cap; ?></h2>
-		</div>      
+      
       </div>
 		<?php 
 		} 
@@ -54,9 +52,7 @@ include 'connection.php';
 			?>	
 		<div class="item">
         <img src="<?php echo $path; ?>" alt="Image">
-        <div class="carousel-caption">
-        <h2><?php echo $slider_cap; ?></h2>
-		</div>      
+      
       </div>	
 				
 		<?php	} ?>
