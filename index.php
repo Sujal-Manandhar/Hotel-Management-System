@@ -155,6 +155,7 @@ include 'connection.php';
           <div class="review-quote"><i class="fa fa-quote-right"></i></div>
           <p class="review-text">"An absolutely breathtaking experience. The attention to detail and the gold-standard service made our anniversary stay truly unforgettable. The infinity pool is a must-see!"</p>
           <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" class="review-avatar" alt="Sarah Jenkins">
             <div class="author-info">
               <h4>Sarah Jenkins</h4>
               <div class="star-rating">
@@ -171,6 +172,7 @@ include 'connection.php';
           <div class="review-quote"><i class="fa fa-quote-right"></i></div>
           <p class="review-text">"The finest hospitality I've experienced in Kathmandu. The rooms are a masterpiece of modern design and comfort. The culinary journey at the restaurant was world-class."</p>
           <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="review-avatar" alt="Michael Chen">
             <div class="author-info">
               <h4>Michael Chen</h4>
               <div class="star-rating">
@@ -187,6 +189,7 @@ include 'connection.php';
           <div class="review-quote"><i class="fa fa-quote-right"></i></div>
           <p class="review-text">"Seamless service from check-in to check-out. The glassy theme of the hotel is so modern and refreshing. I highly recommend the Crown Hotel for business or leisure."</p>
           <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" class="review-avatar" alt="Emily Rodriguez">
             <div class="author-info">
               <h4>Emily Rodriguez</h4>
               <div class="star-rating">
