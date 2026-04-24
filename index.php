@@ -140,6 +140,67 @@ include 'connection.php';
 </div>
 <!-- Features Section End -->
 
+<!-- Customer Reviews Section Start -->
+<div class="container-fluid reviews-section reveal">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">Guest <span style="color:var(--primary-color)">Reviews</span></h2>
+      <p style="color:var(--text-secondary); margin-bottom: 60px;">What our valued guests have to say about their experience.</p>
+    </div>
+    
+    <div class="row">
+      <!-- Review 1 -->
+      <div class="col-sm-4">
+        <div class="review-card">
+          <div class="review-quote"><i class="fa fa-quote-right"></i></div>
+          <p class="review-text">"An absolutely breathtaking experience. The attention to detail and the gold-standard service made our anniversary stay truly unforgettable. The infinity pool is a must-see!"</p>
+          <div class="review-author">
+            <div class="author-info">
+              <h4>Sarah Jenkins</h4>
+              <div class="star-rating">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Review 2 -->
+      <div class="col-sm-4">
+        <div class="review-card">
+          <div class="review-quote"><i class="fa fa-quote-right"></i></div>
+          <p class="review-text">"The finest hospitality I've experienced in Kathmandu. The rooms are a masterpiece of modern design and comfort. The culinary journey at the restaurant was world-class."</p>
+          <div class="review-author">
+            <div class="author-info">
+              <h4>Michael Chen</h4>
+              <div class="star-rating">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Review 3 -->
+      <div class="col-sm-4">
+        <div class="review-card">
+          <div class="review-quote"><i class="fa fa-quote-right"></i></div>
+          <p class="review-text">"Seamless service from check-in to check-out. The glassy theme of the hotel is so modern and refreshing. I highly recommend the Crown Hotel for business or leisure."</p>
+          <div class="review-author">
+            <div class="author-info">
+              <h4>Emily Rodriguez</h4>
+              <div class="star-rating">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Customer Reviews Section End -->
+
 <script>
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
