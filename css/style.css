@@ -194,7 +194,7 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   margin: 0;
-  padding-top: 70px; /* Exact offset for fixed navbar */
+  padding-top: 65px; /* Exact offset for fixed navbar */
   overflow-x: hidden;
 }
 
@@ -236,8 +236,8 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  min-height: 70px !important;
-  padding: 5px 0 !important;
+  min-height: 65px !important;
+  padding: 0 !important;
   width: 100%;
   top: 0;
   left: 0;
@@ -260,7 +260,7 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(255, 255, 255, 0.8) !important;
   font-weight: 500;
   font-size: 15px;
-  padding: 25px 20px !important;
+  padding: 22px 20px !important;
   transition: all 0.3s ease;
   letter-spacing: 0.01em;
 }

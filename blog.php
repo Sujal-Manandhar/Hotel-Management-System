@@ -18,7 +18,7 @@ include('connection.php');
 <body>
   <?php include('Menu Bar.php'); ?>
 
-  <div class="container" style="margin-top:40px;">
+  <div class="container" style="margin-top:20px;">
     <h1 class="text-center">Our <span style="color:var(--accent-color)">Blog</span></h1>
     <p class="text-center text-secondary">Discover the latest stories, travel tips, and updates from Crown Hotel.</p>
     <hr><br>

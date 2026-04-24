@@ -13,7 +13,7 @@ $eid=$_SESSION['create_account_logged_in'];
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <img src="logo/logo2.png" width="120px"height="70px"style="margin-top:5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img src="logo/logo2.png" style="height: 45px; width: auto; margin: 10px 0; margin-right: 25px;">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
