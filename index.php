@@ -90,7 +90,7 @@ include 'connection.php';
 	?>
 	<div class="col-sm-4">
       <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>"><img src="image/rooms/<?php echo $r_res['image']; ?>"class="img-responsive thumbnail"alt="Image"id="img1"> <!--Id Is Img-->
-      <h4 class="Room_Text">[ <?php echo $r_res['type']; ?>]</h4>
+      <h4 class="Room_Text"><?php echo $r_res['type']; ?></h4>
       <p class="text-justify"><?php echo substr($r_res['details'],0,100); ?></p><br>
   </a>
 <!--       <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>" class="btn btn-danger">Read more</a><br><br>
