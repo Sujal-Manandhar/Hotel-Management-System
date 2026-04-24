@@ -63,7 +63,7 @@ if(isset($_POST['send']))
 <!--Footer2 start Here-->
 
 <footer class="container-fluid text-center"style="background-color:#000408;height:40px;padding-top:10px;color:#f0f0f0;">
-  <p>Developed By Sujal Manandhar | All Rights Reserved 2022</p>
+  <p>Developed By Sujal Manandhar | All Rights Reserved 2025</p>
 </footer>
 
 <!--Footer2 start Here-->

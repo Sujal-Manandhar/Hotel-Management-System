@@ -7,13 +7,6 @@
 .navbar {
   margin-bottom: 0;
   border-radius: 0;
-  font-weight: 600;
-  font-size: 17px;
-}
-
-.navbar a {
-  position: relative;
-  top: 15px;
 }
 
 /* Add a gray background color and some padding to the footer */
@@ -76,21 +69,7 @@ h5 {
   width: 100%;
 }
 
-/*  Room Info Add a Image and Hover Fill*/
-#img1 {
-  width: 100%;
-  height: 190px;
-}
-
-#img1:hover {
-  box-shadow: 7px 7px 5px #ffffff;
-}
-
-.hov a:hover {
-  color: #000408;
-}
-
-/*  Room Info Add a Image and Hover End Fill*/
+/* Room Info styles moved to modern section */
 
 /*Login Start*/
 
@@ -127,10 +106,6 @@ h1 {
 
 #top {
   margin: 0px;
-}
-
-.thumbnail a img:hover {
-  box-shadow: 5px 5px 5px #000408;
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -254,29 +229,36 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Override Bootstrap Navbar */
 .navbar-inverse {
-  background: rgba(15, 23, 42, 0.8) !important;
+  background: rgba(15, 23, 42, 0.9) !important;
   backdrop-filter: blur(12px);
   border: none !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  min-height: 80px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .navbar-inverse .navbar-brand {
   color: var(--text-primary) !important;
   font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 800;
+  font-size: 28px;
   letter-spacing: 1px;
+  padding: 20px 15px !important;
 }
 
 .navbar-inverse .navbar-nav>li>a {
   color: var(--text-secondary) !important;
   font-weight: 600;
-  transition: color 0.3s ease;
+  padding: 25px 20px !important;
+  transition: all 0.3s ease;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
   color: var(--accent-color) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  text-decoration: none !important;
 }
 
 /* Typography Enhancements */
@@ -379,14 +361,24 @@ h1 {
 .thumbnail {
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
-  border-radius: 20px !important;
-  padding: 15px !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 24px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .thumbnail:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  border-color: var(--primary-color) !important;
+}
+
+.hov a {
+  text-decoration: none !important;
+}
+
+.hov a:hover, .hov a:focus {
+  text-decoration: none !important;
 }
 
 .thumbnail img {
