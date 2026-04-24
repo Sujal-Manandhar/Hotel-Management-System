@@ -12,15 +12,29 @@ include 'connection.php';
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/style.css" rel="stylesheet"/>
   <meta name="description" content="Welcome to Crown Hotel - Experience luxury and comfort at our premier destination. Book your stay today for an unforgettable experience with world-class amenities.">
   <meta name="keywords" content="Hotel, Luxury Stay, Crown Hotel, Room Booking, Vacation, Travel">
 </head> <!--Head Open  Here-->
 <body>
-  <?php
-      include('Menu Bar.php')
-  ?>
+  
+  <!-- Preloader -->
+  <div id="preloader">
+    <img src="logo/logo2.png" class="preloader-logo" alt="Crown Hotel">
+    <div class="preloader-bar">
+      <div class="preloader-progress"></div>
+    </div>
+  </div>
+
+  <?php include('Menu Bar.php'); ?>
+
+  <!-- Special Offer Banner -->
+  <div class="special-offer-banner">
+    ✨ Flash Sale: Get 20% Off on all Luxury Suites this weekend! Use code: <strong>CROWN20</strong> ✨
+  </div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel"> <!--Slider Image Start Here--> 
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -80,7 +94,7 @@ include 'connection.php';
 </div> <!--Room Info Start Here-->
 
  <div class="container-fluid" id="red">
-<div class="container text-center" id="rooms-section">    
+<div class="container text-center gsap-reveal" id="rooms-section">    
   <h2 class="section-title">Our <span style="color:var(--primary-color)">Rooms</span></h2>
   <hr>
   <p style="color:var(--text-secondary); margin-bottom: 50px;">Experience the perfect blend of luxury, comfort, and style.</p>
@@ -91,7 +105,7 @@ include 'connection.php';
 	while($r_res=mysqli_fetch_assoc($sql))
 	{
 	?>
-	<div class="col-sm-4 room-card-wrapper">
+	<div class="col-sm-4 room-card-wrapper gsap-reveal">
       <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>" style="text-decoration:none;">
         <img src="image/rooms/<?php echo $r_res['image']; ?>" class="img-responsive thumbnail" alt="<?php echo $r_res['type']; ?>">
         <h4 class="Room_Text"><?php echo $r_res['type']; ?></h4>
@@ -104,7 +118,7 @@ include 'connection.php';
 </div>
 
 <!-- Features Section Start -->
-<div class="container-fluid features-section reveal">
+<div class="container-fluid features-section gsap-reveal">
   <div class="container">
     <div class="text-center">
       <h2 class="section-title">Why Choose <span style="color:var(--primary-color)">Crown</span></h2>
@@ -137,7 +151,7 @@ include 'connection.php';
 <!-- Features Section End -->
 
 <!-- Customer Reviews Section Start -->
-<div class="container-fluid reviews-section reveal">
+<div class="container-fluid reviews-section gsap-reveal">
   <div class="container">
     <div class="text-center">
       <h2 class="section-title">Guest <span style="color:var(--primary-color)">Reviews</span></h2>
@@ -199,6 +213,80 @@ include 'connection.php';
   </div>
 </div>
 <!-- Customer Reviews Section End -->
+
+<!-- Professional Stats Section Start -->
+<div class="container-fluid" style="padding: 80px 0; background: rgba(255,255,255,0.02);">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-sm-3 gsap-reveal">
+        <h2 style="color:var(--primary-color); font-size: 3em;">150+</h2>
+        <p style="color:var(--text-secondary); text-transform: uppercase; letter-spacing: 2px;">Luxury Rooms</p>
+      </div>
+      <div class="col-sm-3 gsap-reveal">
+        <h2 style="color:var(--primary-color); font-size: 3em;">12k+</h2>
+        <p style="color:var(--text-secondary); text-transform: uppercase; letter-spacing: 2px;">Happy Guests</p>
+      </div>
+      <div class="col-sm-3 gsap-reveal">
+        <h2 style="color:var(--primary-color); font-size: 3em;">15</h2>
+        <p style="color:var(--text-secondary); text-transform: uppercase; letter-spacing: 2px;">Awards Won</p>
+      </div>
+      <div class="col-sm-3 gsap-reveal">
+        <h2 style="color:var(--primary-color); font-size: 3em;">100%</h2>
+        <p style="color:var(--text-secondary); text-transform: uppercase; letter-spacing: 2px;">Satisfaction</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Stats Section End -->
+
+<script>
+// GSAP Initializations
+gsap.registerPlugin(ScrollTrigger);
+
+// Preloader Animation
+window.addEventListener('load', () => {
+  const tl = gsap.timeline();
+  tl.to('.preloader-progress', { duration: 1.5, left: '0%', ease: 'power3.inOut' })
+    .to('.preloader-logo', { duration: 0.8, opacity: 1, y: -20, ease: 'back.out(1.7)' })
+    .to('#preloader', { duration: 1, opacity: 0, display: 'none', ease: 'power4.inOut', delay: 0.5 })
+    .from('.navbar', { duration: 1.2, y: -100, opacity: 0, ease: 'power4.out' }, '-=0.5')
+    .from('.special-offer-banner', { duration: 0.8, opacity: 0, y: -20, ease: 'power2.out' }, '-=0.3')
+    .from('.carousel-caption', { duration: 1.2, y: 80, opacity: 0, ease: 'expo.out' }, '-=0.7');
+});
+
+// Advanced Scroll Reveals
+const revealElements = document.querySelectorAll(".gsap-reveal");
+revealElements.forEach((el) => {
+  gsap.fromTo(el, 
+    { opacity: 0, y: 60, scale: 0.98 },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 1.5,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 90%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+});
+
+// Staggered Stats Count (Mock)
+gsap.from(".col-sm-3 h2", {
+  scrollTrigger: {
+    trigger: ".col-sm-3",
+    start: "top 80%"
+  },
+  innerHTML: 0,
+  duration: 2,
+  snap: { innerHTML: 1 },
+  stagger: 0.2,
+  ease: "power2.out"
+});
+</script>
 
 <?php
   include('Footer.php')

@@ -12,11 +12,22 @@ include('connection.php');
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/style.css" rel="stylesheet"/>
   <meta name="description" content="Explore our selection of luxury rooms and suites at Crown Hotel. From Deluxe Rooms to Luxurious Suites, find the perfect accommodation for your stay.">
 </head>
 <body>
+  
+  <!-- Preloader -->
+  <div id="preloader">
+    <img src="logo/logo2.png" class="preloader-logo" alt="Crown Hotel">
+    <div class="preloader-bar">
+      <div class="preloader-progress"></div>
+    </div>
+  </div>
+
   <?php include('Menu Bar.php'); ?>
 
   <div class="container" style="margin-top:100px; margin-bottom: 60px;">
@@ -31,7 +42,7 @@ include('connection.php');
       while($r_res=mysqli_fetch_assoc($sql))
       {
       ?>
-      <div class="col-md-4 col-sm-6 room-card-wrapper">
+      <div class="col-md-4 col-sm-6 room-card-wrapper gsap-reveal">
         <div class="glass-panel" style="padding: 0; overflow: hidden; border-radius: 24px;">
           <img src="image/rooms/<?php echo $r_res['image']; ?>" class="img-responsive" style="height: 250px; width: 100%; object-fit: cover;" alt="<?php echo $r_res['type']; ?>">
           <div style="padding: 30px;">
@@ -49,5 +60,33 @@ include('connection.php');
   </div>
 
   <?php include('Footer.php'); ?>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener('load', () => {
+  gsap.to('.preloader-progress', { duration: 1, left: '0%', ease: 'power2.inOut' });
+  gsap.to('.preloader-logo', { duration: 0.5, opacity: 1, y: -10, ease: 'power2.out', delay: 0.5 });
+  gsap.to('#preloader', { duration: 0.8, opacity: 0, display: 'none', ease: 'power2.inOut', delay: 1.2 });
+});
+
+const revealElements = document.querySelectorAll(".gsap-reveal");
+revealElements.forEach((el) => {
+  gsap.fromTo(el, 
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 90%",
+        toggleActions: "play none none none"
+      }
+    }
+  );
+});
+</script>
 </body>
 </html>
