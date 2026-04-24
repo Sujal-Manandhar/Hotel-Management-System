@@ -1,0 +1,454 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.navbar a {
+  position: relative;
+  top: 15px;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+  padding: 25px;
+}
+
+/* color fill*/
+.f {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+/* color fill end*/
+
+.carousel-inner img {
+  width: 100%;
+  /* Set width to 100% */
+  margin: auto;
+  min-height: 50px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+  .carousel-caption {
+    display: none;
+  }
+}
+
+/* Add a Room Info and Color Fill*/
+#red {
+  background-color: #337ab7;
+
+}
+
+/*color Fill*/
+#red hr {
+  /* Add a Room Info and Color Fill*/
+  width: 300px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 5px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+}
+
+/*color End Fill*/
+.text-justify {
+  color: black;
+}
+
+h5 {
+  color: white;
+  background-color: #6d6e6a;
+  height: 100px;
+  width: 100%;
+}
+
+/*  Room Info Add a Image and Hover Fill*/
+#img1 {
+  width: 100%;
+  height: 190px;
+}
+
+#img1:hover {
+  box-shadow: 7px 7px 5px #ffffff;
+}
+
+.hov a:hover {
+  color: #000408;
+}
+
+/*  Room Info Add a Image and Hover End Fill*/
+
+/*Login Start*/
+
+#primary {
+  background-color: #1abc9c;
+  color: black;
+}
+
+.forget a {
+  text-decoration: none;
+  color: #000408;
+}
+
+.forget a:hover {
+  color: white;
+}
+
+.dropdown-menu li ul {
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.forget {
+  /*margin-top:5px;*/
+  padding-top: 10px;
+}
+
+/*Login Close*/
+h1 {
+  font-family: font-family: 'Lobster', cursive;
+  color: #ffffff;
+}
+
+#top {
+  margin: 0px;
+}
+
+.thumbnail a img:hover {
+  box-shadow: 5px 5px 5px #000408;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+#font {
+  font-family: 'Abril Fatface', cursive;
+  color: red;
+  margin-top: 50px;
+  /*padding-top:50px;
+      height:auto;*/
+}
+
+.bg-1 {
+  background-color: #1abc9c;
+  /* Green */
+  color: #ffffff;
+}
+
+#bt {
+  float: right;
+  margin-left: 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+@media screen and (max-width:600px) {
+  .frame {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .amit {
+    text-align: center;
+  }
+}
+
+.Ac_Room_Text {
+  font-family: 'Abril Fatface', cursive;
+  color: black;
+  text-shadow: 3px 3px 3px blue;
+  text-align: center;
+}
+
+.Room_Text {
+  font-family: 'Abril Fatface', cursive;
+  color: #ffbb31;
+  text-shadow: 3px 3px 3px #000000;
+  text-align: center;
+  size: 10px;
+}
+
+.btn-danger {
+  margin: 20px;
+  margin-left: 300px;
+}
+
+.dropdown-menu li a {
+  padding: 10px;
+}
+
+.col-sm-8 {
+  padding: 10px;
+}
+
+.btn btn-danger text-center {
+  text-align: center;
+  padding: 10px;
+  margin-left: 300px;
+}@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --accent-color: #ec4899;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 60px; /* Offset for fixed navbar */
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Container */
+.container, .container-fluid {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Override Bootstrap Navbar */
+.navbar-inverse {
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border: none !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar-inverse .navbar-brand {
+  color: var(--text-primary) !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: var(--text-secondary) !important;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Typography Enhancements */
+h1 {
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none !important; /* Override old shadows */
+  margin-bottom: 20px;
+}
+
+/* Inputs and Forms */
+.form-control {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-radius: 12px;
+  padding: 12px 20px;
+  height: auto;
+  box-shadow: none !important;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3) !important;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Buttons */
+.btn-primary, .btn-success, .btn-danger {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)) !important;
+  border: none !important;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+}
+
+/* Carousel / Slider Enhancement */
+.carousel-inner .item img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  filter: brightness(0.7);
+  border-radius: 24px;
+}
+
+.carousel-caption {
+  bottom: 20%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Table Styles */
+.table {
+  color: var(--text-secondary) !important;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.table>thead>tr>th {
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 15px;
+}
+
+.table>tbody>tr>td {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 15px;
+  vertical-align: middle;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: rgba(255,255,255,0.02);
+}
+
+.table-hover>tbody>tr:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+/* Thumbnail / Room Cards */
+.thumbnail {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 20px !important;
+  padding: 15px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.thumbnail img {
+  border-radius: 12px;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.Room_Text {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+/* Custom layout fixes for old markup */
+.text-justify {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.col-sm-4.text-center {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Remove old inline styles dynamically */
+[style*="background-color:#f4ac41"],
+[style*="background-color:#990707"],
+[style*="background-color:#4286f4"] {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow) !important;
+  padding: 40px 20px !important;
+}
+
+[style*="background-color:#ed2553"] {
+  background: transparent !important;
+}
+
+hr {
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* Feedback Panel Styling */
+.panel {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+}
+.panel-heading {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  border-radius: 20px 20px 0 0 !important;
+  color: var(--text-primary) !important;
+  font-size: 1.2em;
+  padding: 15px !important;
+}
+.panel-body {
+  background: transparent !important;
+}
