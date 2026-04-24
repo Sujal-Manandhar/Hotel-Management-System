@@ -77,10 +77,6 @@ include 'connection.php';
     </a> 
     <!-- Left and right controls Close Here -->
     
-    <div class="scroll-indicator" onclick="document.getElementById('rooms-section').scrollIntoView({behavior: 'smooth'})">
-      <span></span>
-    </div>
-    
 </div> <!--Room Info Start Here-->
 
  <div class="container-fluid" id="red">
