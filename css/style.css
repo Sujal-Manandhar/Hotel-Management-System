@@ -1,178 +1,4 @@
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
-/* Remove the navbar's default margin-bottom and rounded borders */
-.navbar {
-  margin-bottom: 0;
-  border-radius: 0;
-}
-
-/* Add a gray background color and some padding to the footer */
-footer {
-  padding: 25px;
-}
-
-/* color fill*/
-.f {
-  color: white;
-}
-
-h3 {
-  color: white;
-}
-
-/* color fill end*/
-
-.carousel-inner img {
-  width: 100%;
-  /* Set width to 100% */
-  margin: auto;
-  min-height: 50px;
-}
-
-/* Hide the carousel text when the screen is less than 600 pixels wide */
-@media (max-width: 600px) {
-  .carousel-caption {
-    display: none;
-  }
-}
-
-/* Add a Room Info and Color Fill*/
-#red {
-  background: var(--bg-gradient);
-  padding: 100px 0;
-  position: relative;
-}
-
-#red hr {
-  width: 80px;
-  margin: 20px auto;
-  height: 4px;
-  background: var(--primary-color);
-  border: none;
-  border-radius: 10px;
-}
-
-/*color End Fill*/
-.text-justify {
-  color: black;
-}
-
-h5 {
-  color: white;
-  background-color: #6d6e6a;
-  height: 100px;
-  width: 100%;
-}
-
-/* Room Info styles moved to modern section */
-
-/*Login Start*/
-
-#primary {
-  background-color: #1abc9c;
-  color: black;
-}
-
-.forget a {
-  text-decoration: none;
-  color: #000408;
-}
-
-.forget a:hover {
-  color: white;
-}
-
-.dropdown-menu li ul {
-  margin-top: 30px;
-  font-weight: 600;
-  font-size: 17px;
-}
-
-.forget {
-  /*margin-top:5px;*/
-  padding-top: 10px;
-}
-
-/*Login Close*/
-h1 {
-  font-family: font-family: 'Lobster', cursive;
-  color: #ffffff;
-}
-
-#top {
-  margin: 0px;
-}
-
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-#font {
-  font-family: 'Abril Fatface', cursive;
-  color: red;
-  margin-top: 50px;
-  /*padding-top:50px;
-      height:auto;*/
-}
-
-.bg-1 {
-  background-color: #1abc9c;
-  /* Green */
-  color: #ffffff;
-}
-
-#bt {
-  float: right;
-  margin-left: 15px;
-  border-radius: 10px;
-  border: none;
-}
-
-@media screen and (max-width:600px) {
-  .frame {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width:600px) {
-  .amit {
-    text-align: center;
-  }
-}
-
-.Ac_Room_Text {
-  font-family: 'Abril Fatface', cursive;
-  color: black;
-  text-shadow: 3px 3px 3px blue;
-  text-align: center;
-}
-
-.Room_Text {
-  font-family: 'Abril Fatface', cursive;
-  color: #ffbb31;
-  text-shadow: 3px 3px 3px #000000;
-  text-align: center;
-  size: 10px;
-}
-
-.btn-danger {
-  margin: 20px;
-  margin-left: 300px;
-}
-
-.dropdown-menu li a {
-  padding: 10px;
-}
-
-.col-sm-8 {
-  padding: 10px;
-}
-
-.btn btn-danger text-center {
-  text-align: center;
-  padding: 10px;
-  margin-left: 300px;
-}@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap');
 
 :root {
   --primary-color: #c5a059; /* Luxury Gold */
@@ -227,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Override Bootstrap Navbar */
 .navbar-inverse {
-  background: rgba(15, 23, 42, 0.6) !important; /* Slightly more opaque blue-tint for better integration */
+  background: rgba(15, 23, 42, 0.6) !important;
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   border: none !important;
@@ -276,10 +102,10 @@ a:hover, a:focus {
 
 /* Typography Enhancements */
 h1 {
-  background: linear-gradient(to right, #818cf8, #c084fc);
+  background: linear-gradient(to right, #c5a059, #f0d090);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: none !important; /* Override old shadows */
+  text-shadow: none !important;
   margin-bottom: 20px;
 }
 
@@ -298,11 +124,7 @@ h1 {
 .form-control:focus {
   background: rgba(255, 255, 255, 0.1) !important;
   border-color: var(--primary-color) !important;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3) !important;
-}
-
-.form-control::placeholder {
-  color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.3) !important;
 }
 
 /* Buttons */
@@ -314,12 +136,12 @@ h1 {
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
 }
 
 .btn-primary:hover, .btn-success:hover, .btn-danger:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.6);
 }
 
 /* Carousel / Slider Enhancement */
@@ -340,36 +162,6 @@ h1 {
   border: 1px solid rgba(197, 160, 89, 0.2);
 }
 
-/* Custom Table Styles */
-.table {
-  color: var(--text-secondary) !important;
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.table>thead>tr>th {
-  border-bottom: 2px solid rgba(255,255,255,0.1);
-  color: var(--text-primary);
-  font-weight: 600;
-  padding: 15px;
-}
-
-.table>tbody>tr>td {
-  border-top: 1px solid rgba(255,255,255,0.05);
-  padding: 15px;
-  vertical-align: middle;
-}
-
-.table-striped>tbody>tr:nth-of-type(odd) {
-  background-color: rgba(255,255,255,0.02);
-}
-
-.table-hover>tbody>tr:hover {
-  background-color: rgba(255,255,255,0.05);
-}
-
 /* Thumbnail / Room Cards */
 .thumbnail {
   background: var(--glass-bg) !important;
@@ -386,103 +178,52 @@ h1 {
   border-color: var(--primary-color) !important;
 }
 
-.hov a {
-  text-decoration: none !important;
-}
-
-.hov a:hover, .hov a:focus {
-  text-decoration: none !important;
-}
-
 .thumbnail img {
-  border-radius: 12px;
-  height: 200px;
+  border-radius: 0;
+  height: 220px;
   width: 100%;
   object-fit: cover;
-  margin-bottom: 15px;
 }
 
 .Room_Text {
   color: var(--text-primary);
-  margin-bottom: 15px;
+  margin: 20px 15px 10px 15px;
   font-weight: 700;
-  font-size: 1.2em;
-  text-shadow: none !important;
+  font-size: 1.3em;
 }
 
-.Room_Text:hover {
-  text-decoration: none !important;
-}
-
-/* Custom layout fixes for old markup */
-.text-justify {
+.room-desc-text {
   color: var(--text-secondary);
+  padding: 0 15px 20px 15px;
   line-height: 1.6;
 }
 
-.col-sm-4.text-center {
-  background: transparent !important;
-  box-shadow: none !important;
+/* Feature Section Styles */
+.features-section {
+  padding: 100px 0;
+  background: rgba(255, 255, 255, 0.01);
+  border-top: 1px solid var(--glass-border);
 }
 
-/* Remove old inline styles dynamically */
-[style*="background-color:#f4ac41"],
-[style*="background-color:#990707"],
-[style*="background-color:#4286f4"] {
-  background: var(--glass-bg) !important;
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  box-shadow: var(--glass-shadow) !important;
-  padding: 40px 20px !important;
-}
-
-[style*="background-color:#ed2553"] {
-  background: transparent !important;
-}
-
-hr {
-  border-color: rgba(255,255,255,0.1);
-}
-
-/* Luxury Blog List Layout */
-.blog-list-item {
-  display: flex;
-  margin-bottom: 40px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  overflow: hidden;
+.feature-item {
+  padding: 40px 20px;
+  text-align: center;
   transition: all 0.4s ease;
+  border-radius: 24px;
 }
 
-.blog-list-item:hover {
-  transform: translateX(10px);
-  border-color: var(--primary-color);
-  background: rgba(255, 255, 255, 0.05);
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-10px);
 }
 
-.blog-image-wrapper {
-  flex: 0 0 40%;
-  max-width: 400px;
+.feature-icon {
+  font-size: 3.5em;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  display: block;
 }
 
-.blog-content-wrapper {
-  flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-@media (max-width: 768px) {
-  .blog-list-item {
-    flex-direction: column;
-  }
-  .blog-image-wrapper {
-    flex: none;
-    max-width: 100%;
-  }
 /* Scroll Down Indicator */
 .scroll-indicator {
   position: absolute;
@@ -509,17 +250,91 @@ hr {
   60% {transform: translateX(-50%) translateY(-5px);}
 }
 
-/* Enhanced Room Section Alignment */
-.room-card-wrapper {
-  margin-bottom: 50px;
-  padding: 20px;
+/* Luxury Blog List Layout */
+.blog-list-item {
+  display: flex;
+  margin-bottom: 40px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
 }
 
-.room-desc-text {
+.blog-list-item:hover {
+  transform: translateX(10px);
+  border-color: var(--primary-color);
+}
+
+.blog-image-wrapper {
+  flex: 0 0 40%;
+  max-width: 400px;
+}
+
+.blog-content-wrapper {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Footer Redesign */
+#footer {
+  background: #070a0f !important;
+  padding: 100px 0 40px 0 !important;
+  border-top: 1px solid var(--glass-border);
   color: var(--text-secondary);
-  font-size: 1.1em;
-  line-height: 1.6;
-  margin-top: 15px;
+}
+
+.footer-logo {
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* Professional Feedback Form */
+.feedback-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 35px;
+}
+
+.feedback-panel h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+/* Custom Table Styles */
+.table {
+  color: var(--text-secondary) !important;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 /* Section Title Enhancement */
@@ -531,22 +346,29 @@ hr {
   letter-spacing: -1px;
 }
 
-/* Feedback Panel Styling */
-.panel {
-  background: var(--glass-bg) !important;
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 20px;
-  box-shadow: var(--glass-shadow);
+#red {
+  background: var(--bg-gradient);
+  padding: 100px 0;
+  position: relative;
 }
-.panel-heading {
-  background: rgba(0, 0, 0, 0.2) !important;
-  border-bottom: 1px solid var(--glass-border) !important;
-  border-radius: 20px 20px 0 0 !important;
-  color: var(--text-primary) !important;
-  font-size: 1.2em;
-  padding: 15px !important;
+
+#red hr {
+  width: 80px;
+  margin: 20px auto;
+  height: 4px;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 10px;
 }
-.panel-body {
-  background: transparent !important;
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -1,69 +1,63 @@
-<?php 
-include('connection.php');
-if(isset($_POST['send']))
-{
-    $stmt = $con->prepare("INSERT INTO feedback VALUES ('', ?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $_POST['n'], $_POST['e'], $_POST['mob'], $_POST['msg']);
-    $stmt->execute();
-    $msg= "<h4 style='color:green;'>feedback sent successfully</h4>";
-}
-?>
-<!-- Footer1 Start Here-->
+<footer id="footer" class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <!-- About/Logo Column -->
+      <div class="col-sm-4 reveal">
+        <img src="logo/logo2.png" class="footer-logo" alt="Crown Hotel">
+        <p class="footer-text">
+          Crown Hotel is a premier luxury destination situated in the heart of Kathmandu. 
+          We offer 4-star excellence with world-class amenities and personalized services 
+          designed to make every stay unforgettable.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-icon">f</a>
+          <a href="#" class="social-icon">t</a>
+          <a href="#" class="social-icon">i</a>
+          <a href="#" class="social-icon">y</a>
+        </div>
+      </div>
 
-<footer style="background-color: #393939;">
-    <div class="container-fluid">
-	<div class="col-sm-4 hov">
-		<img src="logo/logo2.png"width="120px"height="70px"/><br><br>
-    <p class="text-justify">A  Crown hotel is an establishment that provides paid lodging on a short-term basis. Facilities provided may range from a modest-quality mattress in a small room to large suites with bigger, higher-quality beds, a dresser, a refrigerator and other kitchen facilities, upholstered chairs, a flat screen television, and en-suite bathrooms. </p><br>
-      <center><a href="about.php" class="btn btn-danger"><b>Read More..</b></a></center><br><br><br>
- <?php
-  include('Social ican.php')
-?>
-	</div>&nbsp;&nbsp;
-	<div class="col-sm-4 text-justify">
-	       <h3 style="color:#cdd51f;">Contact Us</h3>
-      <p style="color:white;"><strong>Address:&nbsp;</strong>Hetauda-10,Main Road,Nepal</p>
-      <p style="color:white;"><strong>Email-Id:&nbsp;</strong>crownhotel@gmail.com</p>
-      <p style="color:white;"><strong>Contact Us:&nbsp;</strong>057-520589</p><br><br><br>
-	</div>&nbsp;
+      <!-- Contact Info Column -->
+      <div class="col-sm-3 col-sm-offset-1 reveal">
+        <h3 style="color:var(--primary-color); margin-bottom: 25px;">Contact Us</h3>
+        <p style="margin-bottom: 15px;"><strong>Address:</strong><br>Hetauda-10, Main Road, Nepal</p>
+        <p style="margin-bottom: 15px;"><strong>Phone:</strong><br>+977 057-5020589</p>
+        <p style="margin-bottom: 15px;"><strong>Email:</strong><br>Crownhotel@gmail.com</p>
+      </div>
 
-  <!--Feedback Start Here-->
-	<div class="col-sm-4 text-center">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Feedback</div>
-          <div class="panel-body">
-            <?php echo @$msg; ?>
-      <div class="feedback">
-      <form method="post"><br>
-        <div class="form-group">
-          <input type="text" name="n" class="form-control" id="#"placeholder="Enter Your Name"required>
+      <!-- Feedback Column -->
+      <div class="col-sm-4 reveal">
+        <div class="feedback-panel">
+          <h3>Share Feedback</h3>
+          <form method="post" action="Footer.php">
+            <input type="text" name="n" class="form-control" placeholder="Your Name" required>
+            <input type="email" name="e" class="form-control" placeholder="Email Address" required>
+            <input type="text" name="p" class="form-control" placeholder="Mobile Number" required>
+            <textarea name="msg" class="form-control" placeholder="Your Message" rows="3" required></textarea>
+            <button type="submit" name="send" class="btn btn-primary btn-block">Send Feedback</button>
+          </form>
         </div>
-        <div class="form-group">
-          <input type="Email" name="e" class="form-control" id="#"placeholder="Email"required>
-        </div>
-        <div class="form-group">
-          <input type="Number" name="mob" class="form-control" id="#"placeholder="Mobile Number"required>
-        </div>
-        <div class="form-group">
-          <textarea type="Text" name="msg" class="form-control" id="#"placeholder="Type Your Massage"required></textarea>
-        </div>
-          <input type="submit" value="send" name="send" class="btn btn-primary btn-group-justified"required>
-      </form>     
-        </div>
-       </div>
       </div>
     </div>
-
-    <!--Feedback Panel Close here-->
-
+  </div>
+  
+  <div class="container-fluid text-center" style="margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+    <p style="font-size: 0.9em; opacity: 0.6;">Developed By Sujal Manandhar | All Rights Reserved © 2025</p>
   </div>
 </footer>
-<!--Footer1 Close Here-->
 
-<!--Footer2 start Here-->
-
-<footer class="container-fluid text-center"style="background-color:#000408;height:40px;padding-top:10px;color:#f0f0f0;">
-  <p>Developed By Sujal Manandhar | All Rights Reserved 2025</p>
-</footer>
-
-<!--Footer2 start Here-->
+<?php 
+if(isset($_POST['send']))
+{
+  $name = $_POST['n'];
+  $email = $_POST['e'];
+  $phone = $_POST['p'];
+  $msg = $_POST['msg'];
+  
+  $stmt = $con->prepare("INSERT INTO feedback (name, email, mobile, message) VALUES (?, ?, ?, ?)");
+  $stmt->bind_param("ssss", $name, $email, $phone, $msg);
+  if($stmt->execute()) {
+    echo "<script>alert('Feedback sent successfully!')</script>";
+  }
+}
+?>

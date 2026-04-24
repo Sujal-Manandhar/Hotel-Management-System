@@ -12,6 +12,7 @@ include 'connection.php';
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/style.css" rel="stylesheet"/>
   <meta name="description" content="Welcome to Crown Hotel - Experience luxury and comfort at our premier destination. Book your stay today for an unforgettable experience with world-class amenities.">
   <meta name="keywords" content="Hotel, Luxury Stay, Crown Hotel, Room Booking, Vacation, Travel">
@@ -105,6 +106,55 @@ include 'connection.php';
   </div>
 </div>
 </div>
+
+<!-- Features Section Start -->
+<div class="container-fluid features-section reveal">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">Why Choose <span style="color:var(--primary-color)">Crown</span></h2>
+      <p style="color:var(--text-secondary); margin-bottom: 60px;">World-class services tailored for your ultimate satisfaction.</p>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 feature-item">
+        <div class="feature-icon"><i class="fa fa-wifi"></i></div>
+        <h3 class="feature-title">Free Wi-Fi</h3>
+        <p style="color:var(--text-secondary)">High-speed connectivity throughout the hotel premises.</p>
+      </div>
+      <div class="col-sm-3 feature-item">
+        <div class="feature-icon"><i class="fa fa-cutlery"></i></div>
+        <h3 class="feature-title">Fine Dining</h3>
+        <p style="color:var(--text-secondary)">Exquisite culinary experiences by world-renowned chefs.</p>
+      </div>
+      <div class="col-sm-3 feature-item">
+        <div class="feature-icon"><i class="fa fa-tint"></i></div>
+        <h3 class="feature-title">Infinity Pool</h3>
+        <p style="color:var(--text-secondary)">Breathtaking views while you relax in our pool.</p>
+      </div>
+      <div class="col-sm-3 feature-item">
+        <div class="feature-icon"><i class="fa fa-car"></i></div>
+        <h3 class="feature-title">Secure Parking</h3>
+        <p style="color:var(--text-secondary)">24/7 monitored underground parking for you.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Features Section End -->
+
+<script>
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+window.addEventListener("scroll", reveal);
+reveal(); // Initial check
+</script>
 
 <?php
   include('Footer.php')
