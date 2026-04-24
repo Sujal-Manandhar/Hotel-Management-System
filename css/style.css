@@ -41,20 +41,18 @@ h3 {
 
 /* Add a Room Info and Color Fill*/
 #red {
-  background-color: #337ab7;
-
+  background: var(--bg-gradient);
+  padding: 100px 0;
+  position: relative;
 }
 
-/*color Fill*/
 #red hr {
-  /* Add a Room Info and Color Fill*/
-  width: 300px;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 5px;
-  background-color: #f0f0f0;
-  border-radius: 20px;
+  width: 80px;
+  margin: 20px auto;
+  height: 4px;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 10px;
 }
 
 /*color End Fill*/
@@ -485,6 +483,52 @@ hr {
     flex: none;
     max-width: 100%;
   }
+/* Scroll Down Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+  transform: rotate(45deg);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+  40% {transform: translateX(-50%) translateY(-10px);}
+  60% {transform: translateX(-50%) translateY(-5px);}
+}
+
+/* Enhanced Room Section Alignment */
+.room-card-wrapper {
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.room-desc-text {
+  color: var(--text-secondary);
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+/* Section Title Enhancement */
+.section-title {
+  font-size: 3.5em;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
 }
 
 /* Feedback Panel Styling */

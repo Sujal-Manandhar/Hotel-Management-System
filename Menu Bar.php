@@ -19,6 +19,7 @@ $eid=$_SESSION['create_account_logged_in'];
       <ul class="nav navbar-nav">
         <li><a href="index.php"title="Home">Home</a></li>
         <li><a href="about.php"title="About">About </a></li>
+        <li><a href="rooms.php"title="Rooms">Rooms </a></li>
 		    <li><a href="image gallery.php"title="Gallery">Gallery </a></li>
         <li><a href="blog.php"title="Blog">Blog </a></li>
       </ul>
