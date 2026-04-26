@@ -390,11 +390,12 @@ window.addEventListener('load', () => {
 const revealElements = document.querySelectorAll(".gsap-reveal");
 revealElements.forEach((el) => {
   gsap.fromTo(el, 
-    { opacity: 0, y: 60, scale: 0.98 },
+    { opacity: 0, y: 60, scale: 0.98, visibility: 'hidden' },
     {
       opacity: 1,
       y: 0,
       scale: 1,
+      visibility: 'visible',
       duration: 1.5,
       ease: "expo.out",
       scrollTrigger: {
