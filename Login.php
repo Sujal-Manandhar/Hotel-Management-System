@@ -3,7 +3,8 @@ session_start();
 error_reporting(0);
 if(isset($_SESSION['create_account_logged_in']) && $_SESSION['create_account_logged_in']!="")
 {
-    header('location:Booking Form.php');
+    $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'Booking_Form.php';
+    header('location:' . $redirect);
     exit;
 }
 require('connection.php');
@@ -30,7 +31,8 @@ if(isset($_POST['login']))
           if(password_verify($pass, $row['password']) || $pass === $row['password'])
           {
               $_SESSION['create_account_logged_in']=$eid;  
-              header('location:Booking Form.php'); 
+              $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'Booking_Form.php';
+              header('location:' . $redirect); 
               exit;
           }
           else
@@ -258,7 +260,7 @@ if(isset($_POST['login']))
       <div class="login-links">
         <a href="Forgot account.php">Forgot Password?</a>
         <span>|</span>
-        <a href="Registation form.php">Create an Account</a>
+        <a href="Registation form.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>">Create an Account</a>
       </div>
     </div>
   </div>

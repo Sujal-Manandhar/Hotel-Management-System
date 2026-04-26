@@ -27,7 +27,8 @@ if(isset($_POST['save']))
       $stmt->bind_param("sssssss", $fname, $email, $Passw, $mobi, $addr, $gend, $countr);
       if($stmt->execute())
       {
-          header('location:Login.php'); 
+          $redirect = isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : '';
+          header('location:Login.php' . $redirect); 
           exit;
       }
   }

@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999 !important;
+  z-index: 10001 !important;
 }
 
 .navbar-inverse .navbar-brand {
@@ -831,6 +831,8 @@ h1 {
 @media (max-width: 992px) {
   .quick-book-bar {
     flex-wrap: wrap;
+    margin-top: 0;
+    padding: 20px;
   }
   .qb-item {
     flex: 1 1 45%;
@@ -838,10 +840,10 @@ h1 {
   .qb-btn-wrap {
     flex: 1 1 100%;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px;
   }
   .hero-title {
-    font-size: 2.5em;
+    font-size: 2.8em;
   }
   .section-title {
     font-size: 2.5em;
@@ -851,27 +853,48 @@ h1 {
 @media (max-width: 768px) {
   .floating-nav {
     right: 15px;
-    bottom: 30px;
+    bottom: 20px;
+    gap: 10px;
   }
   .nav-btn {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+  }
+  .quick-book-section {
+    margin-top: 0;
+    padding: 0 15px;
   }
   .quick-book-bar {
     flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 20px;
+    margin-top: 20px;
   }
   .qb-item {
     flex: 1 1 100%;
   }
+  .qb-item label {
+    margin-bottom: 4px;
+  }
+  .hero-overlay-content {
+    width: 90%;
+    padding-top: 40px;
+  }
   .hero-title {
-    font-size: 2em;
+    font-size: 1.8em;
+    line-height: 1.2;
   }
   .hero-subtitle {
-    font-size: 1em;
+    font-size: 0.85em;
     letter-spacing: 2px;
   }
   .carousel-inner .item img {
-    height: 400px;
+    height: 450px;
+  }
+  .carousel-indicators {
+    bottom: 10px;
   }
   .section-title {
     font-size: 2em;
@@ -881,5 +904,31 @@ h1 {
   }
   .btn-subscribe {
     padding: 14px 30px;
+  }
+  
+  /* Room details responsiveness */
+  .rd-hero {
+    height: 40vh;
+    padding-bottom: 30px;
+  }
+  .rd-hero-content h1 {
+    font-size: 1.8em;
+  }
+  .rd-price-badge {
+    padding: 8px 15px;
+  }
+  .rd-price-amount {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.5em;
+  }
+  .btn-book-now {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
   }
 }

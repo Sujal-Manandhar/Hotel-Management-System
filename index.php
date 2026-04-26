@@ -99,40 +99,40 @@ include 'connection.php';
 <!-- Quick Book Section -->
 <div class="quick-book-section">
   <div class="container">
-    <div class="quick-book-bar">
+    <form action="Booking_Form.php" method="GET" class="quick-book-bar">
       <div class="qb-item">
         <label><i class="fa fa-calendar"></i> Check In</label>
-        <input type="date" class="form-control">
+        <input type="date" name="checkin" class="form-control" required>
       </div>
       <div class="qb-item">
         <label><i class="fa fa-calendar"></i> Check Out</label>
-        <input type="date" class="form-control">
+        <input type="date" name="checkout" class="form-control" required>
       </div>
       <div class="qb-item">
         <label><i class="fa fa-users"></i> Guests</label>
-        <select class="form-control">
-          <option>1 Adult</option>
-          <option>2 Adults</option>
-          <option>2 Adults + 1 Child</option>
-          <option>Family (4+)</option>
+        <select name="guests" class="form-control">
+          <option value="single">1 Adult</option>
+          <option value="twin">2 Adults</option>
+          <option value="double">2 Adults + 1 Child</option>
+          <option value="double">Family (4+)</option>
         </select>
       </div>
       <div class="qb-item">
         <label><i class="fa fa-bed"></i> Room Type</label>
-        <select class="form-control">
-          <option>Any Room</option>
+        <select name="room_type" class="form-control">
+          <option value="">Any Room</option>
           <?php 
           $sql_rooms=mysqli_query($con,"select * from rooms");
           while($rm=mysqli_fetch_assoc($sql_rooms)){
           ?>
-          <option><?php echo $rm['type']; ?></option>
+          <option value="<?php echo $rm['type']; ?>"><?php echo $rm['type']; ?></option>
           <?php } ?>
         </select>
       </div>
       <div class="qb-item qb-btn-wrap">
-        <a href="rooms.php" class="btn-book-now"><i class="fa fa-search"></i> Check Availability</a>
+        <button type="submit" class="btn-book-now"><i class="fa fa-search"></i> Check Availability</button>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 

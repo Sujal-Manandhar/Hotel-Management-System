@@ -4,7 +4,8 @@ error_reporting(0);
 include('connection.php');
 
 if (!isset($_SESSION['create_account_logged_in']) || $_SESSION['create_account_logged_in']=="") {
-    header('location:Login.php');
+    $redirect = 'Booking_Form.php' . ($_SERVER['QUERY_STRING'] ? '?' . $_SERVER['QUERY_STRING'] : '');
+    header('location:Login.php?redirect=' . urlencode($redirect));
     exit;
 }
 $eid = $_SESSION['create_account_logged_in'];
@@ -21,6 +22,12 @@ $room_sql = mysqli_query($con, "SELECT DISTINCT type FROM rooms ORDER BY type");
 while ($rr = mysqli_fetch_assoc($room_sql)) {
     $room_types[] = $rr['type'];
 }
+
+// Read URL params passed from room_details.php booking widget
+$pre_room_type = $_GET['room_type'] ?? '';
+$pre_checkin = $_GET['checkin'] ?? '';
+$pre_checkout = $_GET['checkout'] ?? '';
+$pre_guests = $_GET['guests'] ?? '';
 
 if (isset($_POST['savedata'])) {
     $email = $_POST['email'];
@@ -283,7 +290,7 @@ if (isset($_POST['savedata'])) {
           <label><i class="fa fa-hotel"></i> Room Type</label>
           <select name="room_type" class="form-control" required>
             <?php foreach($room_types as $rt) { ?>
-              <option value="<?php echo $rt; ?>"><?php echo $rt; ?></option>
+              <option value="<?php echo $rt; ?>" <?php echo ($pre_room_type == $rt) ? 'selected' : ''; ?>><?php echo $rt; ?></option>
             <?php } ?>
             <?php if(empty($room_types)) { ?>
               <option>Deluxe Room</option>
@@ -298,9 +305,9 @@ if (isset($_POST['savedata'])) {
         <div class="bf-field">
           <label><i class="fa fa-users"></i> Occupancy</label>
           <div class="occupancy-options">
-            <label><input type="radio" name="Occupancy" value="single" required> Single</label>
-            <label><input type="radio" name="Occupancy" value="twin"> Twin</label>
-            <label><input type="radio" name="Occupancy" value="double"> Double</label>
+            <label><input type="radio" name="Occupancy" value="single" <?php echo ($pre_guests == 'single') ? 'checked' : ''; ?> required> Single</label>
+            <label><input type="radio" name="Occupancy" value="twin" <?php echo ($pre_guests == 'twin') ? 'checked' : ''; ?>> Twin</label>
+            <label><input type="radio" name="Occupancy" value="double" <?php echo ($pre_guests == 'double') ? 'checked' : ''; ?>> Double</label>
           </div>
         </div>
       </div>
@@ -308,7 +315,7 @@ if (isset($_POST['savedata'])) {
       <div class="bf-row">
         <div class="bf-field">
           <label><i class="fa fa-calendar"></i> Check-In Date</label>
-          <input type="date" name="cdate" class="form-control" required>
+          <input type="date" name="cdate" class="form-control" value="<?php echo $pre_checkin; ?>" required>
         </div>
         <div class="bf-field">
           <label><i class="fa fa-clock-o"></i> Check-In Time</label>
@@ -316,7 +323,7 @@ if (isset($_POST['savedata'])) {
         </div>
         <div class="bf-field">
           <label><i class="fa fa-calendar-times-o"></i> Check-Out Date</label>
-          <input type="date" name="codate" class="form-control" required>
+          <input type="date" name="codate" class="form-control" value="<?php echo $pre_checkout; ?>" required>
         </div>
       </div>
 

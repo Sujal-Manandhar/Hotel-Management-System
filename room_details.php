@@ -336,13 +336,20 @@
 <?php include('Menu Bar.php'); ?>
 <?php 
 include('connection.php');
-$room_id=$_GET['room_id'];
-$sql=mysqli_query($con,"select * from rooms where room_id='$room_id' ");
-$res=mysqli_fetch_assoc($sql);
-$room_type = $res['type'];
-$room_price = $res['price'];
-$room_details = $res['details'];
-$room_image = $res['image'];
+$room_id = isset($_GET['room_id']) ? $_GET['room_id'] : 1;
+$sql = mysqli_query($con, "SELECT * FROM rooms WHERE room_id='$room_id'");
+$res = mysqli_fetch_assoc($sql);
+
+if (!$res) {
+    // Fallback to first room if ID not found
+    $sql = mysqli_query($con, "SELECT * FROM rooms LIMIT 1");
+    $res = mysqli_fetch_assoc($sql);
+}
+
+$room_type = isset($res['type']) ? $res['type'] : 'Deluxe Room';
+$room_price = isset($res['price']) ? $res['price'] : '0';
+$room_details = isset($res['details']) ? $res['details'] : '';
+$room_image = isset($res['image']) ? $res['image'] : '';
 ?>
 
 <!-- Hero Section -->
@@ -435,21 +442,25 @@ $room_image = $res['image'];
         <div class="booking-price"><?php echo $room_price; ?></div>
         <div class="booking-per">per night (taxes included)</div>
         
+        <form id="bookingWidgetForm" method="GET" action="Booking_Form.php">
+        <input type="hidden" name="room_type" value="<?php echo $room_type; ?>">
+        
         <label><i class="fa fa-calendar"></i> Check-In</label>
-        <input type="date" class="form-control">
+        <input type="date" name="checkin" class="form-control" required>
         
         <label><i class="fa fa-calendar"></i> Check-Out</label>
-        <input type="date" class="form-control">
+        <input type="date" name="checkout" class="form-control" required>
         
         <label><i class="fa fa-users"></i> Guests</label>
-        <select class="form-control">
-          <option>1 Adult</option>
-          <option>2 Adults</option>
-          <option>2 Adults + 1 Child</option>
-          <option>Family (4+)</option>
+        <select name="guests" class="form-control">
+          <option value="single">1 Adult</option>
+          <option value="twin">2 Adults</option>
+          <option value="double">2 Adults + 1 Child</option>
+          <option value="double">Family (4+)</option>
         </select>
         
-        <a href="Login.php" class="btn-reserve">Book Now <i class="fa fa-arrow-right"></i></a>
+        <button type="submit" class="btn-reserve">Book Now <i class="fa fa-arrow-right"></i></button>
+        </form>
         
         <hr class="booking-divider">
         
