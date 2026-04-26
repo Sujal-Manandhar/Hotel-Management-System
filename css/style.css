@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* Override Bootstrap Navbar */
+/* ==================== NAVBAR ==================== */
 .navbar-inverse {
   background: rgba(15, 23, 42, 0.6) !important;
   backdrop-filter: blur(25px) saturate(180%);
@@ -98,9 +98,14 @@ h1, h2, h3, h4, h5, h6 {
 
 a:hover, a:focus {
   text-decoration: none !important;
+  outline: none !important;
 }
 
-/* Typography Enhancements */
+button:focus, .btn:focus, .form-control:focus {
+  outline: none !important;
+}
+
+/* ==================== TYPOGRAPHY ==================== */
 h1 {
   background: linear-gradient(to right, #c5a059, #f0d090);
   -webkit-background-clip: text;
@@ -109,7 +114,22 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Inputs and Forms */
+/* Section Common Styles */
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--primary-color);
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 60px;
+  font-size: 1.1em;
+}
+
+/* ==================== FORMS ==================== */
 .form-control {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -127,7 +147,7 @@ h1 {
   box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.3) !important;
 }
 
-/* Buttons */
+/* ==================== BUTTONS ==================== */
 .btn-primary, .btn-success, .btn-danger {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)) !important;
   border: none !important;
@@ -137,6 +157,7 @@ h1 {
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+  color: #000 !important;
 }
 
 .btn-primary:hover, .btn-success:hover, .btn-danger:hover {
@@ -144,61 +165,260 @@ h1 {
   box-shadow: 0 8px 25px rgba(197, 160, 89, 0.6);
 }
 
-/* Carousel / Slider Enhancement */
+/* ==================== HERO CAROUSEL ==================== */
+.hero-carousel {
+  position: relative;
+}
+
 .carousel-inner .item img {
   width: 100%;
   height: 600px;
   object-fit: cover;
-  filter: brightness(0.7);
-  border-radius: 24px;
+  filter: brightness(0.5);
 }
 
-.carousel-caption {
-  bottom: 25%;
-  background: rgba(10, 14, 23, 0.6);
-  backdrop-filter: blur(12px);
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid rgba(197, 160, 89, 0.2);
+.hero-overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+  opacity: 0;
 }
 
-/* Thumbnail / Room Cards */
-.thumbnail {
-  background: var(--glass-bg) !important;
-  border: 1px solid var(--glass-border) !important;
-  border-radius: 24px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
+.hero-title {
+  font-size: 4em;
+  font-weight: 800;
+  background: linear-gradient(to right, #fff, #c5a059);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+  text-shadow: none;
+}
+
+.hero-subtitle {
+  font-size: 1.4em;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* ==================== QUICK BOOK BAR ==================== */
+.quick-book-section {
+  position: relative;
+  z-index: 10;
+  margin-top: -45px;
+  opacity: 0;
+}
+
+.quick-book-bar {
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  border-radius: 20px;
+  padding: 25px 30px;
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.qb-item {
+  flex: 1;
+}
+
+.qb-item label {
+  color: var(--primary-color);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+.qb-item .form-control {
+  height: 48px;
+  font-size: 0.95em;
+}
+
+.qb-btn-wrap {
+  flex: 0 0 auto;
+}
+
+.btn-book-now {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: #000 !important;
+  padding: 14px 30px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.btn-book-now:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+  color: #000 !important;
+}
+
+/* ==================== EXPERIENCES SECTION ==================== */
+.experiences-section {
+  padding: 100px 0;
+  background: #080b12;
+}
+
+.exp-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin-bottom: 30px;
+}
+
+.exp-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.exp-img-wrapper {
+  height: 220px;
+  overflow: hidden;
+}
+
+.exp-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.exp-card:hover .exp-img-wrapper img {
+  transform: scale(1.1);
+}
+
+.exp-content {
+  padding: 30px;
+  text-align: center;
+}
+
+.exp-icon {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  color: var(--primary-color);
+  font-size: 1.5em;
+  margin: -50px auto 20px auto;
+  position: relative;
+  z-index: 2;
+}
+
+.exp-content h3 {
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.exp-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ==================== ROOM CARDS (LANDING) ==================== */
+.room-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 30px;
 }
 
-.thumbnail:hover {
+.room-card:hover {
   transform: translateY(-15px) scale(1.02);
   box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-  border-color: var(--primary-color) !important;
+  border-color: var(--primary-color);
 }
 
-.thumbnail img {
-  border-radius: 0;
+.room-card-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.room-card-img img {
   height: 220px;
   width: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.room-card:hover .room-card-img img {
+  transform: scale(1.08);
+}
+
+.room-card-price {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(10px);
+  color: var(--primary-color);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.95em;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.room-card-body {
+  padding: 20px;
 }
 
 .Room_Text {
   color: var(--text-primary);
-  margin: 20px 15px 10px 15px;
   font-weight: 700;
   font-size: 1.3em;
+  margin: 0 0 10px 0;
 }
 
 .room-desc-text {
   color: var(--text-secondary);
-  padding: 0 15px 20px 15px;
   line-height: 1.6;
+  margin-bottom: 15px;
 }
 
-/* Feature Section Styles */
+.room-view-btn {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9em;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+
+.room-card:hover .room-view-btn {
+  letter-spacing: 2px;
+}
+
+/* Legacy thumbnail override */
+.thumbnail {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==================== FEATURES SECTION ==================== */
 .features-section {
   padding: 100px 0;
   background: rgba(255, 255, 255, 0.01);
@@ -224,151 +444,7 @@ h1 {
   display: block;
 }
 
-
-
-/* Luxury Blog List Layout */
-.blog-list-item {
-  display: flex;
-  margin-bottom: 40px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-
-.blog-list-item:hover {
-  transform: translateX(10px);
-  border-color: var(--primary-color);
-}
-
-.blog-image-wrapper {
-  flex: 0 0 40%;
-  max-width: 400px;
-  min-height: 280px;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.blog-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.blog-content-wrapper {
-  flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Footer Redesign */
-#footer {
-  background: #070a0f !important;
-  padding: 60px 0 30px 0 !important;
-  border-top: 1px solid var(--glass-border);
-  color: var(--text-secondary);
-}
-
-.footer-logo {
-  height: 50px;
-  margin-bottom: 20px;
-}
-
-.social-links {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.social-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  background: var(--primary-color);
-  color: #fff;
-}
-
-/* Professional Feedback Form */
-.feedback-panel {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 25px;
-}
-
-.feedback-panel h3 {
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  font-size: 1.5em;
-}
-
-.feedback-panel .form-control {
-  background: rgba(255, 255, 255, 0.02) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  margin-bottom: 12px;
-  padding: 10px 15px;
-  font-size: 0.9em;
-  height: auto;
-}
-
-/* Custom Table Styles */
-.table {
-  color: var(--text-secondary) !important;
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-/* Section Title Enhancement */
-.section-title {
-  font-size: 3.5em;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 10px;
-  letter-spacing: -1px;
-}
-
-#red {
-  background: var(--bg-gradient);
-  padding: 100px 0;
-  position: relative;
-}
-
-#red hr {
-  width: 80px;
-  margin: 20px auto;
-  height: 4px;
-  background: var(--primary-color);
-  border: none;
-  border-radius: 10px;
-}
-
-/* Reveal Animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Customer Review Styles */
+/* ==================== REVIEWS SECTION ==================== */
 .reviews-section {
   padding: 100px 0;
   background: var(--bg-gradient);
@@ -431,7 +507,247 @@ h1 {
   margin-top: 5px;
 }
 
-/* Floating Navigation Buttons */
+/* ==================== STATS SECTION ==================== */
+.stats-section {
+  padding: 80px 0;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.stat-item {
+  padding: 30px 20px;
+}
+
+.stat-icon {
+  font-size: 2em;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+.stat-number {
+  color: var(--primary-color);
+  font-size: 3em;
+  font-weight: 800;
+  margin: 0;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+/* ==================== NEWSLETTER SECTION ==================== */
+.newsletter-section {
+  padding: 80px 0;
+  background: var(--bg-gradient);
+}
+
+.newsletter-box {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 60px 40px;
+  backdrop-filter: blur(16px);
+}
+
+.newsletter-icon {
+  font-size: 3em;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.newsletter-box h2 {
+  font-size: 2.5em;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.newsletter-box p {
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.newsletter-form .form-control {
+  height: 52px;
+  font-size: 1em;
+  flex: 1;
+}
+
+.btn-subscribe {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: #000;
+  border: none;
+  padding: 0 30px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.btn-subscribe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+}
+
+/* ==================== BLOG LIST LAYOUT ==================== */
+.blog-list-item {
+  display: flex;
+  margin-bottom: 40px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.blog-list-item:hover {
+  transform: translateX(10px);
+  border-color: var(--primary-color);
+}
+
+.blog-image-wrapper {
+  flex: 0 0 40%;
+  max-width: 400px;
+  min-height: 280px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.blog-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-content-wrapper {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ==================== FOOTER ==================== */
+#footer {
+  background: #070a0f !important;
+  padding: 60px 0 30px 0 !important;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+}
+
+.footer-logo {
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* Professional Feedback Form */
+.feedback-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.feedback-panel h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.feedback-panel .form-control {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  font-size: 0.9em;
+  height: auto;
+}
+
+/* ==================== TABLES ==================== */
+.table {
+  color: var(--text-secondary) !important;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ==================== SECTION TITLE ==================== */
+.section-title {
+  font-size: 3.5em;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+#red {
+  background: var(--bg-gradient);
+  padding: 100px 0;
+  position: relative;
+}
+
+#red hr {
+  width: 80px;
+  margin: 20px auto;
+  height: 4px;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 10px;
+}
+
+/* ==================== ANIMATIONS ==================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== FLOATING NAV ==================== */
 .floating-nav {
   position: fixed;
   right: 30px;
@@ -466,18 +782,7 @@ h1 {
   box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
 }
 
-@media (max-width: 768px) {
-  .floating-nav {
-    right: 15px;
-    bottom: 30px;
-  }
-  .nav-btn {
-    width: 45px;
-    height: 45px;
-  }
-}
-
-/* Preloader */
+/* ==================== PRELOADER ==================== */
 #preloader {
   position: fixed;
   top: 0;
@@ -515,24 +820,66 @@ h1 {
   background: var(--primary-color);
 }
 
-/* GSAP Reveal Helpers */
+/* ==================== GSAP HELPERS ==================== */
 .gsap-reveal {
   opacity: 0;
   visibility: hidden;
   will-change: transform, opacity;
 }
 
-/* Special Offer Banner */
-.special-offer-banner {
-  background: linear-gradient(90deg, #c5a059 0%, #b38e44 100%);
-  color: #000;
-  padding: 12px 0;
-  text-align: center;
-  font-weight: 700;
-  position: relative;
-  z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-size: 0.9em;
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 992px) {
+  .quick-book-bar {
+    flex-wrap: wrap;
+  }
+  .qb-item {
+    flex: 1 1 45%;
+  }
+  .qb-btn-wrap {
+    flex: 1 1 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .hero-title {
+    font-size: 2.5em;
+  }
+  .section-title {
+    font-size: 2.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-nav {
+    right: 15px;
+    bottom: 30px;
+  }
+  .nav-btn {
+    width: 45px;
+    height: 45px;
+  }
+  .quick-book-bar {
+    flex-direction: column;
+  }
+  .qb-item {
+    flex: 1 1 100%;
+  }
+  .hero-title {
+    font-size: 2em;
+  }
+  .hero-subtitle {
+    font-size: 1em;
+    letter-spacing: 2px;
+  }
+  .carousel-inner .item img {
+    height: 400px;
+  }
+  .section-title {
+    font-size: 2em;
+  }
+  .newsletter-form {
+    flex-direction: column;
+  }
+  .btn-subscribe {
+    padding: 14px 30px;
+  }
 }

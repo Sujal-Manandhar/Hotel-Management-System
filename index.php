@@ -31,11 +31,8 @@ include 'connection.php';
 
   <?php include('Menu Bar.php'); ?>
 
-  <!-- Special Offer Banner -->
-  <div class="special-offer-banner">
-    ✨ Flash Sale: Get 20% Off on all Luxury Suites this weekend! Use code: <strong>CROWN20</strong> ✨
-  </div>
-<div id="myCarousel" class="carousel slide" data-ride="carousel"> <!--Slider Image Start Here--> 
+<!-- Hero Slider -->
+<div id="myCarousel" class="carousel slide hero-carousel" data-ride="carousel"> <!--Slider Image Start Here--> 
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -90,14 +87,109 @@ include 'connection.php';
       <span class="sr-only">Next</span>
     </a> 
     <!-- Left and right controls Close Here -->
-    
-</div> <!--Room Info Start Here-->
 
+    <!-- Hero Overlay Content -->
+    <div class="hero-overlay-content">
+      <h1 class="hero-title">Welcome to Crown Hotel</h1>
+      <p class="hero-subtitle">Where Luxury Meets Perfection</p>
+    </div>
+    
+</div>
+
+<!-- Quick Book Section -->
+<div class="quick-book-section">
+  <div class="container">
+    <div class="quick-book-bar">
+      <div class="qb-item">
+        <label><i class="fa fa-calendar"></i> Check In</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="qb-item">
+        <label><i class="fa fa-calendar"></i> Check Out</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="qb-item">
+        <label><i class="fa fa-users"></i> Guests</label>
+        <select class="form-control">
+          <option>1 Adult</option>
+          <option>2 Adults</option>
+          <option>2 Adults + 1 Child</option>
+          <option>Family (4+)</option>
+        </select>
+      </div>
+      <div class="qb-item">
+        <label><i class="fa fa-bed"></i> Room Type</label>
+        <select class="form-control">
+          <option>Any Room</option>
+          <?php 
+          $sql_rooms=mysqli_query($con,"select * from rooms");
+          while($rm=mysqli_fetch_assoc($sql_rooms)){
+          ?>
+          <option><?php echo $rm['type']; ?></option>
+          <?php } ?>
+        </select>
+      </div>
+      <div class="qb-item qb-btn-wrap">
+        <a href="rooms.php" class="btn-book-now"><i class="fa fa-search"></i> Check Availability</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Exclusive Experiences Section -->
+<div class="container-fluid experiences-section">
+  <div class="container text-center">
+    <h2 class="section-title gsap-reveal">Exclusive <span style="color:var(--primary-color)">Experiences</span></h2>
+    <div class="section-divider gsap-reveal"></div>
+    <p class="section-subtitle gsap-reveal">Indulge in curated moments designed for royalty.</p>
+    
+    <div class="row">
+      <div class="col-sm-4 gsap-reveal">
+        <div class="exp-card">
+          <div class="exp-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" alt="Spa & Wellness">
+          </div>
+          <div class="exp-content">
+            <div class="exp-icon"><i class="fa fa-leaf"></i></div>
+            <h3>Serenity Spa</h3>
+            <p>Rejuvenate your mind and body with our award-winning spa therapies and wellness retreats.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 gsap-reveal">
+        <div class="exp-card">
+          <div class="exp-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Fine Dining">
+          </div>
+          <div class="exp-content">
+            <div class="exp-icon"><i class="fa fa-cutlery"></i></div>
+            <h3>Culinary Excellence</h3>
+            <p>Savor exquisite dishes crafted by internationally acclaimed chefs using the finest ingredients.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 gsap-reveal">
+        <div class="exp-card">
+          <div class="exp-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80" alt="Events & Weddings">
+          </div>
+          <div class="exp-content">
+            <div class="exp-icon"><i class="fa fa-diamond"></i></div>
+            <h3>Grand Events</h3>
+            <p>Host unforgettable weddings, galas, and corporate events in our magnificent ballrooms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Our Rooms Section -->
  <div class="container-fluid" id="red">
 <div class="container text-center gsap-reveal" id="rooms-section">    
   <h2 class="section-title">Our <span style="color:var(--primary-color)">Rooms</span></h2>
-  <hr>
-  <p style="color:var(--text-secondary); margin-bottom: 50px;">Experience the perfect blend of luxury, comfort, and style.</p>
+  <div class="section-divider"></div>
+  <p class="section-subtitle">Experience the perfect blend of luxury, comfort, and style.</p>
   
   <div class="row">
 	<?php 
@@ -107,9 +199,17 @@ include 'connection.php';
 	?>
 	<div class="col-sm-4 room-card-wrapper gsap-reveal">
       <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>" style="text-decoration:none;">
-        <img src="image/rooms/<?php echo $r_res['image']; ?>" class="img-responsive thumbnail" alt="<?php echo $r_res['type']; ?>">
-        <h4 class="Room_Text"><?php echo $r_res['type']; ?></h4>
-        <p class="room-desc-text"><?php echo substr($r_res['details'],0,120); ?>...</p>
+        <div class="room-card">
+          <div class="room-card-img">
+            <img src="image/rooms/<?php echo $r_res['image']; ?>" class="img-responsive" alt="<?php echo $r_res['type']; ?>">
+            <div class="room-card-price"><?php echo $r_res['price']; ?></div>
+          </div>
+          <div class="room-card-body">
+            <h4 class="Room_Text"><?php echo $r_res['type']; ?></h4>
+            <p class="room-desc-text"><?php echo substr($r_res['details'],0,120); ?>...</p>
+            <span class="room-view-btn">View Details <i class="fa fa-arrow-right"></i></span>
+          </div>
+        </div>
       </a>
     </div>
 	<?php } ?>
@@ -122,7 +222,8 @@ include 'connection.php';
   <div class="container">
     <div class="text-center">
       <h2 class="section-title">Why Choose <span style="color:var(--primary-color)">Crown</span></h2>
-      <p style="color:var(--text-secondary); margin-bottom: 60px;">World-class services tailored for your ultimate satisfaction.</p>
+      <div class="section-divider"></div>
+      <p class="section-subtitle">World-class services tailored for your ultimate satisfaction.</p>
     </div>
     <div class="row">
       <div class="col-sm-3 feature-item">
@@ -155,7 +256,8 @@ include 'connection.php';
   <div class="container">
     <div class="text-center">
       <h2 class="section-title">Guest <span style="color:var(--primary-color)">Reviews</span></h2>
-      <p style="color:var(--text-secondary); margin-bottom: 60px;">What our valued guests have to say about their experience.</p>
+      <div class="section-divider"></div>
+      <p class="section-subtitle">What our valued guests have to say about their experience.</p>
     </div>
     
     <div class="row">
@@ -215,43 +317,73 @@ include 'connection.php';
 <!-- Customer Reviews Section End -->
 
 <!-- Professional Stats Section Start -->
-<div class="container-fluid" style="padding: 80px 0; background: rgba(255,255,255,0.02);">
+<div class="container-fluid stats-section">
   <div class="container text-center">
     <div class="row">
-      <div class="col-sm-3 gsap-reveal">
-        <h2 style="color:var(--primary-color); font-size: 3em;">150+</h2>
-        <p style="color:var(--text-secondary); text-transform: uppercase; letter-spacing: 2px;">Luxury Rooms</p>
+      <div class="col-sm-3 stat-item gsap-reveal">
+        <div class="stat-icon"><i class="fa fa-bed"></i></div>
+        <h2 class="stat-number">150+</h2>
+        <p class="stat-label">Luxury Rooms</p>
       </div>
-      <div class="col-sm-3 gsap-reveal">
-        <h2 style="color:var(--primary-color); font-size: 3em;">12k+</h2>
-        <p style="color:var(--text-secondary); text-transform: uppercase; letter-spacing: 2px;">Happy Guests</p>
+      <div class="col-sm-3 stat-item gsap-reveal">
+        <div class="stat-icon"><i class="fa fa-smile-o"></i></div>
+        <h2 class="stat-number">12k+</h2>
+        <p class="stat-label">Happy Guests</p>
       </div>
-      <div class="col-sm-3 gsap-reveal">
-        <h2 style="color:var(--primary-color); font-size: 3em;">15</h2>
-        <p style="color:var(--text-secondary); text-transform: uppercase; letter-spacing: 2px;">Awards Won</p>
+      <div class="col-sm-3 stat-item gsap-reveal">
+        <div class="stat-icon"><i class="fa fa-trophy"></i></div>
+        <h2 class="stat-number">15</h2>
+        <p class="stat-label">Awards Won</p>
       </div>
-      <div class="col-sm-3 gsap-reveal">
-        <h2 style="color:var(--primary-color); font-size: 3em;">100%</h2>
-        <p style="color:var(--text-secondary); text-transform: uppercase; letter-spacing: 2px;">Satisfaction</p>
+      <div class="col-sm-3 stat-item gsap-reveal">
+        <div class="stat-icon"><i class="fa fa-heart"></i></div>
+        <h2 class="stat-number">100%</h2>
+        <p class="stat-label">Satisfaction</p>
       </div>
     </div>
   </div>
 </div>
 <!-- Stats Section End -->
 
+<!-- Newsletter Section -->
+<div class="container-fluid newsletter-section gsap-reveal">
+  <div class="container text-center">
+    <div class="newsletter-box">
+      <div class="newsletter-icon"><i class="fa fa-envelope-open-o"></i></div>
+      <h2>Join the <span style="color:var(--primary-color)">Crown Elite</span></h2>
+      <p>Subscribe to our newsletter for exclusive offers, luxury travel tips, and priority bookings.</p>
+      <form class="newsletter-form">
+        <input type="email" class="form-control" placeholder="Enter your email address">
+        <button type="button" class="btn-subscribe">Subscribe Now <i class="fa fa-arrow-right"></i></button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Newsletter End -->
+
 <script>
 // GSAP Initializations
 gsap.registerPlugin(ScrollTrigger);
 
-// Preloader Animation
+// Preloader Animation - FIXED: removed dead .carousel-caption target
 window.addEventListener('load', () => {
   const tl = gsap.timeline();
   tl.to('.preloader-progress', { duration: 1.5, left: '0%', ease: 'power3.inOut' })
     .to('.preloader-logo', { duration: 0.8, opacity: 1, y: -20, ease: 'back.out(1.7)' })
     .to('#preloader', { duration: 1, opacity: 0, display: 'none', ease: 'power4.inOut', delay: 0.5 })
-    .from('.navbar', { duration: 1.2, y: -100, opacity: 0, ease: 'power4.out' }, '-=0.5')
-    .from('.special-offer-banner', { duration: 0.8, opacity: 0, y: -20, ease: 'power2.out' }, '-=0.3')
-    .from('.carousel-caption', { duration: 1.2, y: 80, opacity: 0, ease: 'expo.out' }, '-=0.7');
+    .fromTo('.navbar', { y: -100, opacity: 0 }, { duration: 1.2, y: 0, opacity: 1, ease: 'power4.out' }, '-=0.5')
+    .fromTo('.hero-overlay-content', { y: 60, opacity: 0 }, { duration: 1.2, y: 0, opacity: 1, ease: 'expo.out' }, '-=0.7')
+    .fromTo('.quick-book-section', { y: 30, opacity: 0 }, { duration: 1, y: 0, opacity: 1, ease: 'power3.out' }, '-=0.5');
+
+  // Safety fallback: ensure navbar is always visible after animation
+  setTimeout(() => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      navbar.style.opacity = '1';
+      navbar.style.transform = 'translateY(0)';
+      navbar.style.visibility = 'visible';
+    }
+  }, 5000);
 });
 
 // Advanced Scroll Reveals
@@ -274,10 +406,10 @@ revealElements.forEach((el) => {
   );
 });
 
-// Staggered Stats Count (Mock)
-gsap.from(".col-sm-3 h2", {
+// Staggered Stats Count
+gsap.from(".stat-number", {
   scrollTrigger: {
-    trigger: ".col-sm-3",
+    trigger: ".stats-section",
     start: "top 80%"
   },
   innerHTML: 0,
