@@ -179,13 +179,15 @@
     }
 
     /* Booking Sidebar */
+    .rd-sidebar-sticky {
+      position: sticky;
+      top: 85px;
+    }
     .rd-booking-card {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
       border-radius: 20px;
       padding: 35px;
-      position: sticky;
-      top: 85px;
     }
     .rd-booking-card h3 {
       color: #fff;
@@ -265,7 +267,7 @@
       border: 1px solid var(--glass-border);
       border-radius: 20px;
       padding: 30px;
-      margin-top: 20px;
+      margin-top: 15px;
     }
     .rd-other-rooms h3 {
       color: var(--primary-color);
@@ -323,7 +325,7 @@
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .rd-booking-card {
+      .rd-sidebar-sticky {
         position: static;
         margin-bottom: 30px;
       }
@@ -426,6 +428,7 @@ $room_image = $res['image'];
     
     <!-- Right Column - Booking & Navigation -->
     <div class="col-md-4">
+      <div class="rd-sidebar-sticky">
       <!-- Sticky Booking Widget -->
       <div class="rd-booking-card">
         <h3>Reserve Your Stay</h3>
@@ -472,6 +475,7 @@ $room_image = $res['image'];
         </a>
         <?php } ?>
       </div>
+      </div><!-- end rd-sidebar-sticky -->
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
 	<h1>User Registration</h1><hr>
 	<tr>
 		<th>Sr No</th>
-		<th>Name</th>
+		<th>Full Name</th>
 		<th>Email</th>
 		<th>Password</th>
 		<th>Mobile</th>
