@@ -126,11 +126,11 @@ if(isset($_POST['login']))
       font-size: 0.8em;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-bottom: 6px;
+      margin-bottom: 0;
       display: block;
     }
     .login-right .form-control {
-      margin-bottom: 20px;
+      margin-bottom: 0;
       height: 50px;
     }
     .btn-login {
@@ -183,18 +183,13 @@ if(isset($_POST['login']))
       text-align: center;
     }
     .input-icon-wrap {
-      position: relative;
+      margin-bottom: 20px;
     }
-    .input-icon-wrap i {
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-secondary);
-      margin-top: -10px;
+    .input-icon-wrap label i {
+      margin-right: 6px;
     }
     .input-icon-wrap .form-control {
-      padding-left: 45px;
+      margin-top: 6px;
     }
     @media (max-width: 768px) {
       .login-left { display: none; }
