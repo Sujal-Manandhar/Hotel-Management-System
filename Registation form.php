@@ -171,6 +171,26 @@ if(isset($_POST['save']))
       width: 16px;
       height: 16px;
     }
+    .pass-wrap {
+      position: relative;
+    }
+    .pass-wrap .form-control {
+      padding-right: 45px;
+    }
+    .pass-toggle {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: color 0.3s;
+      z-index: 2;
+    }
+    .pass-toggle:hover {
+      color: var(--primary-color);
+    }
     .btn-register {
       display: block;
       width: 100%;
@@ -258,11 +278,14 @@ if(isset($_POST['save']))
         <div class="reg-row">
           <div class="field-group">
             <label><i class="fa fa-lock"></i> Password</label>
-            <input type="password" name="Passw" class="form-control" placeholder="••••••••" autocomplete="off" required>
+            <div class="pass-wrap">
+              <input type="password" id="regPass" name="Passw" class="form-control" placeholder="••••••••" autocomplete="off" required>
+              <i class="fa fa-eye pass-toggle" onclick="togglePass('regPass', this)"></i>
+            </div>
           </div>
           <div class="field-group">
             <label><i class="fa fa-phone"></i> Mobile</label>
-            <input type="text" name="mobi" class="form-control" placeholder="+977 98..." required>
+            <input type="text" name="mobi" class="form-control" placeholder="Enter your mobile number" required>
           </div>
         </div>
 
@@ -313,5 +336,19 @@ if(isset($_POST['save']))
   </div>
 </div>
 
+<script>
+function togglePass(id, icon) {
+  var inp = document.getElementById(id);
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    icon.classList.remove('fa-eye');
+    icon.classList.add('fa-eye-slash');
+  } else {
+    inp.type = 'password';
+    icon.classList.remove('fa-eye-slash');
+    icon.classList.add('fa-eye');
+  }
+}
+</script>
 </body>
 </html>

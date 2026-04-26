@@ -175,6 +175,26 @@ if(isset($login))
       color: rgba(197, 160, 89, 0.4);
       margin-right: 5px;
     }
+    .pass-wrap {
+      position: relative;
+    }
+    .pass-wrap .form-control {
+      padding-right: 45px;
+    }
+    .pass-toggle {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: color 0.3s;
+      z-index: 2;
+    }
+    .pass-toggle:hover {
+      color: var(--primary-color);
+    }
   </style>
 </head>
 <body>
@@ -196,8 +216,10 @@ if(isset($login))
       <input type="text" class="form-control" name="eid" placeholder="Enter admin username" required>
 
       <label><i class="fa fa-lock"></i> Password</label>
-      <input type="password" class="form-control" name="pass" placeholder="••••••••" required>
-
+      <div class="pass-wrap">
+        <input type="password" class="form-control" id="adminPass" name="pass" placeholder="••••••••" required>
+        <i class="fa fa-eye pass-toggle" onclick="togglePass('adminPass', this)"></i>
+      </div>
       <button type="submit" name="login" class="btn-admin-login"><i class="fa fa-sign-in"></i> Access Dashboard</button>
     </form>
 
@@ -211,5 +233,19 @@ if(isset($login))
   </div>
 </div>
 
+<script>
+function togglePass(id, icon) {
+  var inp = document.getElementById(id);
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    icon.classList.remove('fa-eye');
+    icon.classList.add('fa-eye-slash');
+  } else {
+    inp.type = 'password';
+    icon.classList.remove('fa-eye-slash');
+    icon.classList.add('fa-eye');
+  }
+}
+</script>
 </body>
 </html>

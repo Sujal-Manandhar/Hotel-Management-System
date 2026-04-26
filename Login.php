@@ -191,6 +191,26 @@ if(isset($_POST['login']))
     .input-icon-wrap .form-control {
       margin-top: 6px;
     }
+    .pass-wrap {
+      position: relative;
+    }
+    .pass-wrap .form-control {
+      padding-right: 45px;
+    }
+    .pass-toggle {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: color 0.3s;
+      z-index: 2;
+    }
+    .pass-toggle:hover {
+      color: var(--primary-color);
+    }
     @media (max-width: 768px) {
       .login-left { display: none; }
       .login-container { max-width: 450px; }
@@ -227,7 +247,10 @@ if(isset($_POST['login']))
         </div>
         <div class="input-icon-wrap">
           <label><i class="fa fa-lock"></i> Password</label>
-          <input type="password" class="form-control" name="pass" placeholder="••••••••" autocomplete="off" required>
+          <div class="pass-wrap">
+            <input type="password" class="form-control" id="loginPass" name="pass" placeholder="••••••••" autocomplete="off" required>
+            <i class="fa fa-eye pass-toggle" onclick="togglePass('loginPass', this)"></i>
+          </div>
         </div>
         <button type="submit" name="login" class="btn-login">Sign In <i class="fa fa-arrow-right"></i></button>
       </form>
@@ -241,5 +264,19 @@ if(isset($_POST['login']))
   </div>
 </div>
 
+<script>
+function togglePass(id, icon) {
+  var inp = document.getElementById(id);
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    icon.classList.remove('fa-eye');
+    icon.classList.add('fa-eye-slash');
+  } else {
+    inp.type = 'password';
+    icon.classList.remove('fa-eye-slash');
+    icon.classList.add('fa-eye');
+  }
+}
+</script>
 </body>
 </html>
