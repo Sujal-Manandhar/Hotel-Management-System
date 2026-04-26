@@ -1,6 +1,6 @@
 <?php 
 session_start();
-error_reporting(1);
+error_reporting(0);
 include('connection.php');
 ?>
 <!DOCTYPE html>
@@ -19,38 +19,41 @@ include('connection.php');
   <meta name="description" content="Explore our selection of luxury rooms and suites at Crown Hotel. From Deluxe Rooms to Luxurious Suites, find the perfect accommodation for your stay.">
 </head>
 <body>
-  
-  <!-- Preloader -->
-  <div id="preloader">
-    <img src="logo/logo2.png" class="preloader-logo" alt="Crown Hotel">
-    <div class="preloader-bar">
-      <div class="preloader-progress"></div>
-    </div>
-  </div>
 
   <?php include('Menu Bar.php'); ?>
 
-  <div class="container" style="margin-top:100px; margin-bottom: 60px;">
-    <div class="text-center">
-      <h1 class="section-title">Luxury <span style="color:var(--primary-color)">Accommodations</span></h1>
-      <p style="color:var(--text-secondary); font-size: 1.2em; max-width: 700px; margin: 20px auto 60px auto;">Indulge in our carefully curated selection of rooms, each designed to provide an unparalleled level of comfort and sophistication.</p>
-    </div>
+  <!-- Page Hero Banner -->
+  <div style="background: linear-gradient(135deg, rgba(10,14,23,0.9), rgba(22,27,34,0.85)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80') center/cover; padding: 120px 0 80px 0; text-align: center; margin-top: -65px; padding-top: 150px;">
+    <h1 class="section-title" style="margin-bottom: 15px;">Our <span style="color:var(--primary-color)">Rooms</span></h1>
+    <div class="section-divider"></div>
+    <p style="color: var(--text-secondary); font-size: 1.2em; max-width: 600px; margin: 20px auto 0 auto;">Indulge in our carefully curated selection of rooms, each designed to provide an unparalleled level of comfort and sophistication.</p>
+  </div>
 
+  <!-- Room Cards Grid -->
+  <div class="container" style="margin-top: 60px; margin-bottom: 60px;">
     <div class="row">
       <?php 
       $sql=mysqli_query($con,"select * from rooms");
       while($r_res=mysqli_fetch_assoc($sql))
       {
       ?>
-      <div class="col-md-4 col-sm-6 room-card-wrapper gsap-reveal">
-        <div class="glass-panel" style="padding: 0; overflow: hidden; border-radius: 24px;">
-          <img src="image/rooms/<?php echo $r_res['image']; ?>" class="img-responsive" style="height: 250px; width: 100%; object-fit: cover;" alt="<?php echo $r_res['type']; ?>">
-          <div style="padding: 30px;">
-            <h3 style="color: var(--text-primary); margin-bottom: 15px;"><?php echo $r_res['type']; ?></h3>
-            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 25px; height: 80px; overflow: hidden;"><?php echo $r_res['details']; ?></p>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="color: var(--primary-color); font-weight: 700; font-size: 1.2em;">Premium Stay</span>
-              <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>" class="btn btn-primary btn-sm">Book Now</a>
+      <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+        <div class="room-card">
+          <div class="room-card-img">
+            <img src="image/rooms/<?php echo $r_res['image']; ?>" alt="<?php echo $r_res['type']; ?>">
+            <div class="room-card-price"><?php echo $r_res['price']; ?></div>
+          </div>
+          <div class="room-card-body">
+            <h4 class="Room_Text"><?php echo $r_res['type']; ?></h4>
+            <p class="room-desc-text" style="height: 72px; overflow: hidden;"><?php echo substr($r_res['details'],0,120); ?>...</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+              <div style="display: flex; gap: 8px;">
+                <span style="color: var(--primary-color); font-size: 0.85em;" title="Wi-Fi"><i class="fa fa-wifi"></i></span>
+                <span style="color: var(--primary-color); font-size: 0.85em;" title="AC"><i class="fa fa-snowflake-o"></i></span>
+                <span style="color: var(--primary-color); font-size: 0.85em;" title="TV"><i class="fa fa-television"></i></span>
+                <span style="color: var(--primary-color); font-size: 0.85em;" title="Room Service"><i class="fa fa-bell"></i></span>
+              </div>
+              <a href="room_details.php?room_id=<?php echo $r_res['room_id']; ?>" class="room-view-btn" style="color: var(--primary-color); font-weight: 600;">View Details <i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -62,29 +65,12 @@ include('connection.php');
   <?php include('Footer.php'); ?>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
-
+// Simple page load animation - no gsap-reveal class needed
 window.addEventListener('load', () => {
-  gsap.to('.preloader-progress', { duration: 1, left: '0%', ease: 'power2.inOut' });
-  gsap.to('.preloader-logo', { duration: 0.5, opacity: 1, y: -10, ease: 'power2.out', delay: 0.5 });
-  gsap.to('#preloader', { duration: 0.8, opacity: 0, display: 'none', ease: 'power2.inOut', delay: 1.2 });
-});
-
-const revealElements = document.querySelectorAll(".gsap-reveal");
-revealElements.forEach((el) => {
-  gsap.fromTo(el, 
-    { opacity: 0, y: 50 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 90%",
-        toggleActions: "play none none none"
-      }
-    }
+  // Animate room cards with stagger
+  gsap.fromTo('.room-card', 
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out', delay: 0.3 }
   );
 });
 </script>
