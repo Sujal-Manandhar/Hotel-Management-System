@@ -1,6 +1,6 @@
 <?php 
-session_start();
-error_reporting(1);
+if(!session_id()) @session_start();
+error_reporting(0);
 include('connection.php');
 $eid=$_SESSION['create_account_logged_in'];
 ?>
