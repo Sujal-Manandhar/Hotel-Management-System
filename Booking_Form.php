@@ -5,7 +5,8 @@ include('connection.php');
 
 if (!isset($_SESSION['create_account_logged_in']) || $_SESSION['create_account_logged_in']=="") {
     $redirect = 'Booking_Form.php' . ($_SERVER['QUERY_STRING'] ? '?' . $_SERVER['QUERY_STRING'] : '');
-    header('location:Login.php?redirect=' . urlencode($redirect));
+    $_GET['redirect'] = $redirect;
+    include('Login.php');
     exit;
 }
 $eid = $_SESSION['create_account_logged_in'];
@@ -29,28 +30,60 @@ $pre_checkin = $_GET['checkin'] ?? '';
 $pre_checkout = $_GET['checkout'] ?? '';
 $pre_guests = $_GET['guests'] ?? '';
 
+if ($pre_checkin && $pre_checkout && strtotime($pre_checkout) <= strtotime($pre_checkin)) {
+    $pre_checkout = '';
+    $msg = "Check-out date must be after check-in date.";
+    $msg_type = "error";
+}
+
 if (isset($_POST['savedata'])) {
-    $email = $_POST['email'];
-    $room_type = $_POST['room_type'];
-    
-    $stmt2 = $con->prepare("SELECT * FROM room_booking_details WHERE email=? AND room_type=?");
-    $stmt2->bind_param("ss", $email, $room_type);
-    $stmt2->execute();
-    $res2 = $stmt2->get_result();
-    
-    if ($res2->num_rows > 0) {
-        $msg = "You have already booked this room type.";
+    $email = $_POST['email'] ?? '';
+    $room_type = $_POST['room_type'] ?? '';
+    $check_in_date = $_POST['cdate'] ?? '';
+    $check_out_date = $_POST['codate'] ?? '';
+
+    if (!$check_in_date || !$check_out_date || strtotime($check_out_date) <= strtotime($check_in_date)) {
+        $msg = "Check-out date must be after check-in date.";
         $msg_type = "error";
     } else {
-        $stmt3 = $con->prepare("INSERT INTO room_booking_details(name,email,phone,address,city,state,zip,country,room_type,Occupancy,check_in_date,check_in_time,check_out_date) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $state = $_POST['state'] ?? '';
-        $zip = $_POST['zip'] ?? '';
-        $country = $_POST['country'] ?? '';
-        
-        $stmt3->bind_param("sssssssssssss", $_POST['name'], $email, $_POST['phone'], $_POST['address'], $_POST['city'], $state, $zip, $country, $room_type, $_POST['Occupancy'], $_POST['cdate'], $_POST['ctime'], $_POST['codate']);
-        if ($stmt3->execute()) {
-            $msg = "Room booked successfully!";
-            $msg_type = "success";
+        $stmt2 = $con->prepare("SELECT * FROM room_booking_details WHERE email=? AND room_type=?");
+        if (!$stmt2) {
+            $msg = "Unable to check existing bookings. Please try again.";
+            $msg_type = "error";
+        } else {
+            $stmt2->bind_param("ss", $email, $room_type);
+            $stmt2->execute();
+            $res2 = $stmt2->get_result();
+
+            if ($res2->num_rows > 0) {
+                $msg = "You have already booked this room type.";
+                $msg_type = "error";
+            } else {
+                $stmt3 = $con->prepare("INSERT INTO room_booking_details(name,email,phone,address,city,state,zip,contry,room_type,Occupancy,check_in_date,check_in_time,check_out_date) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                if (!$stmt3) {
+                    $msg = "Unable to save your booking right now. Please try again.";
+                    $msg_type = "error";
+                } else {
+                    $name = $_POST['name'] ?? '';
+                    $phone = $_POST['phone'] ?? '';
+                    $address = $_POST['address'] ?? '';
+                    $city = $_POST['city'] ?? '';
+                    $state = $_POST['state'] ?? '';
+                    $zip = $_POST['zip'] ?? '0';
+                    $country = $_POST['country'] ?? ($result['country'] ?? '');
+                    $occupancy = $_POST['Occupancy'] ?? '';
+                    $check_in_time = $_POST['ctime'] ?? '';
+
+                    $stmt3->bind_param("sssssssssssss", $name, $email, $phone, $address, $city, $state, $zip, $country, $room_type, $occupancy, $check_in_date, $check_in_time, $check_out_date);
+                    if ($stmt3->execute()) {
+                        $msg = "Room booked successfully!";
+                        $msg_type = "success";
+                    } else {
+                        $msg = "Unable to save your booking right now. Please try again.";
+                        $msg_type = "error";
+                    }
+                }
+            }
         }
     }
 }
@@ -61,6 +94,7 @@ if (isset($_POST['savedata'])) {
   <title>Book Your Stay - Crown Hotel</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="logo/logo2.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -290,7 +324,7 @@ if (isset($_POST['savedata'])) {
           <label><i class="fa fa-hotel"></i> Room Type</label>
           <select name="room_type" class="form-control" required>
             <?php foreach($room_types as $rt) { ?>
-              <option value="<?php echo $rt; ?>" <?php echo ($pre_room_type == $rt) ? 'selected' : ''; ?>><?php echo $rt; ?></option>
+              <option value="<?php echo htmlspecialchars($rt); ?>" <?php echo ($pre_room_type == $rt) ? 'selected' : ''; ?>><?php echo htmlspecialchars($rt); ?></option>
             <?php } ?>
             <?php if(empty($room_types)) { ?>
               <option>Deluxe Room</option>
@@ -315,7 +349,7 @@ if (isset($_POST['savedata'])) {
       <div class="bf-row">
         <div class="bf-field">
           <label><i class="fa fa-calendar"></i> Check-In Date</label>
-          <input type="date" name="cdate" class="form-control" value="<?php echo $pre_checkin; ?>" required>
+          <input type="date" name="cdate" class="form-control" value="<?php echo htmlspecialchars($pre_checkin); ?>" required>
         </div>
         <div class="bf-field">
           <label><i class="fa fa-clock-o"></i> Check-In Time</label>
@@ -323,7 +357,7 @@ if (isset($_POST['savedata'])) {
         </div>
         <div class="bf-field">
           <label><i class="fa fa-calendar-times-o"></i> Check-Out Date</label>
-          <input type="date" name="codate" class="form-control" value="<?php echo $pre_checkout; ?>" required>
+          <input type="date" name="codate" class="form-control" value="<?php echo htmlspecialchars($pre_checkout); ?>" required>
         </div>
       </div>
 
@@ -333,5 +367,27 @@ if (isset($_POST['savedata'])) {
 </div>
 
 <?php include('Footer.php'); ?>
+<script>
+const checkInInput = document.querySelector('input[name="cdate"]');
+const checkOutInput = document.querySelector('input[name="codate"]');
+
+function syncCheckOutMinimum() {
+  if (!checkInInput || !checkOutInput || !checkInInput.value) return;
+
+  const checkInDate = new Date(`${checkInInput.value}T00:00:00`);
+  checkInDate.setDate(checkInDate.getDate() + 1);
+  const minimumCheckOut = checkInDate.toISOString().slice(0, 10);
+
+  checkOutInput.min = minimumCheckOut;
+  if (checkOutInput.value && checkOutInput.value < minimumCheckOut) {
+    checkOutInput.value = '';
+  }
+}
+
+if (checkInInput && checkOutInput) {
+  syncCheckOutMinimum();
+  checkInInput.addEventListener('change', syncCheckOutMinimum);
+}
+</script>
 </body>
 </html>

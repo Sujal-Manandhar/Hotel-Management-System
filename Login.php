@@ -1,13 +1,37 @@
 <?php 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 error_reporting(0);
+function local_redirect($fallback = 'Booking_Form.php') {
+    $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : $fallback;
+
+    if (!isset($_GET['redirect']) && isset($_GET['checkin'], $_GET['checkout'], $_GET['guests'])) {
+        $booking_params = [
+            'checkin' => $_GET['checkin'],
+            'checkout' => $_GET['checkout'],
+            'guests' => $_GET['guests'],
+            'room_type' => $_GET['room_type'] ?? '',
+        ];
+        $redirect = 'Booking_Form.php?' . http_build_query($booking_params);
+    }
+
+    $parts = parse_url($redirect);
+
+    if ($redirect === '' || isset($parts['scheme']) || isset($parts['host']) || strpos($redirect, '//') === 0) {
+        return $fallback;
+    }
+
+    return str_replace(["\r", "\n"], '', $redirect);
+}
+
 if(isset($_SESSION['create_account_logged_in']) && $_SESSION['create_account_logged_in']!="")
 {
-    $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'Booking_Form.php';
-    header('location:' . $redirect);
+    header('Location: ' . local_redirect());
     exit;
 }
 require('connection.php');
+$login_action = 'Login.php?redirect=' . urlencode(local_redirect());
 
 if(isset($_POST['login']))
 {
@@ -31,8 +55,7 @@ if(isset($_POST['login']))
           if(password_verify($pass, $row['password']) || $pass === $row['password'])
           {
               $_SESSION['create_account_logged_in']=$eid;  
-              $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'Booking_Form.php';
-              header('location:' . $redirect); 
+              header('Location: ' . local_redirect());
               exit;
           }
           else
@@ -53,6 +76,7 @@ if(isset($_POST['login']))
   <title>Guest Login - Crown Hotel</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="logo/logo2.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -242,7 +266,7 @@ if(isset($_POST['login']))
         <div class="login-error"><i class="fa fa-exclamation-circle"></i> <?php echo $error; ?></div>
       <?php } ?>
 
-      <form method="post">
+      <form method="post" action="<?php echo htmlspecialchars($login_action); ?>">
         <div class="input-icon-wrap">
           <label><i class="fa fa-envelope"></i> Email Address</label>
           <input type="email" class="form-control" name="eid" placeholder="you@example.com" autocomplete="off" required>
@@ -258,9 +282,9 @@ if(isset($_POST['login']))
       </form>
 
       <div class="login-links">
-        <a href="Forgot account.php">Forgot Password?</a>
+        <a href="Forgot_Account.php">Forgot Password?</a>
         <span>|</span>
-        <a href="Registation form.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>">Create an Account</a>
+        <a href="Registration_Form.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>">Create an Account</a>
       </div>
     </div>
   </div>

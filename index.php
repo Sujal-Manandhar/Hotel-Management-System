@@ -9,6 +9,7 @@ include 'connection.php';
   <title>Crown Hotel.com</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="logo/logo2.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -99,7 +100,7 @@ include 'connection.php';
 <!-- Quick Book Section -->
 <div class="quick-book-section">
   <div class="container">
-    <form action="Booking_Form.php" method="GET" class="quick-book-bar">
+    <form action="<?php echo !empty($_SESSION['create_account_logged_in']) ? 'Booking_Form.php' : 'Login.php'; ?>" method="GET" class="quick-book-bar" id="quickBookForm">
       <div class="qb-item">
         <label><i class="fa fa-calendar"></i> Check In</label>
         <input type="date" name="checkin" class="form-control" required>
@@ -114,7 +115,7 @@ include 'connection.php';
           <option value="single">1 Adult</option>
           <option value="twin">2 Adults</option>
           <option value="double">2 Adults + 1 Child</option>
-          <option value="double">Family (4+)</option>
+          <option value="family">Family (4+)</option>
         </select>
       </div>
       <div class="qb-item">
@@ -419,6 +420,53 @@ gsap.from(".stat-number", {
   stagger: 0.2,
   ease: "power2.out"
 });
+
+const quickBookForm = document.getElementById('quickBookForm');
+if (quickBookForm) {
+  const checkInInput = quickBookForm.querySelector('input[name="checkin"]');
+  const checkOutInput = quickBookForm.querySelector('input[name="checkout"]');
+
+  function isQuickBookDateRangeValid() {
+    if (!checkInInput.value || !checkOutInput.value) return true;
+    return new Date(`${checkOutInput.value}T00:00:00`) > new Date(`${checkInInput.value}T00:00:00`);
+  }
+
+  function validateQuickBookDateRange() {
+    if (isQuickBookDateRangeValid()) {
+      checkOutInput.setCustomValidity('');
+      return true;
+    }
+
+    checkOutInput.setCustomValidity('Check-out date must be after check-in date.');
+    return false;
+  }
+
+  function syncQuickBookCheckOutMinimum() {
+    if (!checkInInput.value) return;
+
+    const checkInDate = new Date(`${checkInInput.value}T00:00:00`);
+    checkInDate.setDate(checkInDate.getDate() + 1);
+    const minimumCheckOut = checkInDate.toISOString().slice(0, 10);
+
+    checkOutInput.min = minimumCheckOut;
+    if (checkOutInput.value && checkOutInput.value < minimumCheckOut) {
+      checkOutInput.value = '';
+    }
+
+    validateQuickBookDateRange();
+  }
+
+  checkInInput.addEventListener('change', syncQuickBookCheckOutMinimum);
+  checkInInput.addEventListener('input', validateQuickBookDateRange);
+  checkOutInput.addEventListener('input', validateQuickBookDateRange);
+  checkOutInput.addEventListener('change', validateQuickBookDateRange);
+  quickBookForm.addEventListener('submit', function(event) {
+    if (!validateQuickBookDateRange()) {
+      event.preventDefault();
+      checkOutInput.reportValidity();
+    }
+  });
+}
 </script>
 
 <?php

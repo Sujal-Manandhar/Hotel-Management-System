@@ -4,6 +4,7 @@
 <title>Room Details - Crown Hotel</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="logo/logo2.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -214,6 +215,10 @@
     }
     .rd-booking-card .form-control {
       margin-bottom: 15px;
+    }
+    .rd-booking-card select.form-control option {
+      background: #fff !important;
+      color: #111827 !important;
     }
     .btn-reserve {
       display: block;
@@ -442,7 +447,7 @@ $room_image = isset($res['image']) ? $res['image'] : '';
         <div class="booking-price"><?php echo $room_price; ?></div>
         <div class="booking-per">per night (taxes included)</div>
         
-        <form id="bookingWidgetForm" method="GET" action="Booking_Form.php">
+        <form id="bookingWidgetForm" method="GET" action="<?php echo !empty($_SESSION['create_account_logged_in']) ? 'Booking_Form.php' : 'Login.php'; ?>">
         <input type="hidden" name="room_type" value="<?php echo $room_type; ?>">
         
         <label><i class="fa fa-calendar"></i> Check-In</label>
@@ -456,7 +461,7 @@ $room_image = isset($res['image']) ? $res['image'] : '';
           <option value="single">1 Adult</option>
           <option value="twin">2 Adults</option>
           <option value="double">2 Adults + 1 Child</option>
-          <option value="double">Family (4+)</option>
+          <option value="family">Family (4+)</option>
         </select>
         
         <button type="submit" class="btn-reserve">Book Now <i class="fa fa-arrow-right"></i></button>
@@ -502,6 +507,53 @@ window.addEventListener('load', () => {
   gsap.fromTo('.rd-other-rooms', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.8 });
   gsap.fromTo('.feature-grid-item', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out', delay: 1 });
 });
+
+const bookingWidgetForm = document.getElementById('bookingWidgetForm');
+if (bookingWidgetForm) {
+  const checkInInput = bookingWidgetForm.querySelector('input[name="checkin"]');
+  const checkOutInput = bookingWidgetForm.querySelector('input[name="checkout"]');
+
+  function isBookingWidgetDateRangeValid() {
+    if (!checkInInput.value || !checkOutInput.value) return true;
+    return new Date(`${checkOutInput.value}T00:00:00`) > new Date(`${checkInInput.value}T00:00:00`);
+  }
+
+  function validateBookingWidgetDateRange() {
+    if (isBookingWidgetDateRangeValid()) {
+      checkOutInput.setCustomValidity('');
+      return true;
+    }
+
+    checkOutInput.setCustomValidity('Check-out date must be after check-in date.');
+    return false;
+  }
+
+  function syncCheckOutMinimum() {
+    if (!checkInInput.value) return;
+
+    const checkInDate = new Date(`${checkInInput.value}T00:00:00`);
+    checkInDate.setDate(checkInDate.getDate() + 1);
+    const minimumCheckOut = checkInDate.toISOString().slice(0, 10);
+
+    checkOutInput.min = minimumCheckOut;
+    if (checkOutInput.value && checkOutInput.value < minimumCheckOut) {
+      checkOutInput.value = '';
+    }
+
+    validateBookingWidgetDateRange();
+  }
+
+  checkInInput.addEventListener('change', syncCheckOutMinimum);
+  checkInInput.addEventListener('input', validateBookingWidgetDateRange);
+  checkOutInput.addEventListener('input', validateBookingWidgetDateRange);
+  checkOutInput.addEventListener('change', validateBookingWidgetDateRange);
+  bookingWidgetForm.addEventListener('submit', function(event) {
+    if (!validateBookingWidgetDateRange()) {
+      event.preventDefault();
+      checkOutInput.reportValidity();
+    }
+  });
+}
 </script>
 
 <?php include('Footer.php'); ?>

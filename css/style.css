@@ -147,6 +147,11 @@ h1 {
   box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.3) !important;
 }
 
+select.form-control option {
+  background-color: #fff !important;
+  color: #111827 !important;
+}
+
 /* ==================== BUTTONS ==================== */
 .btn-primary, .btn-success, .btn-danger {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)) !important;
@@ -242,6 +247,34 @@ h1 {
 .qb-item .form-control {
   height: 48px;
   font-size: 0.95em;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(197, 160, 89, 0.2) !important;
+  color: #fff !important;
+  border-radius: 12px;
+}
+
+/* Custom dropdown chevron */
+.qb-item select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23c5a059' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 15px center !important;
+  padding-right: 40px !important;
+}
+
+/* Fix select dropdown options visibility */
+.qb-item select option {
+  background-color: #fff !important;
+  color: #111827 !important;
+}
+
+/* Fix date input icon visibility and color to match #c5a059 */
+.qb-item input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(72%) sepia(17%) saturate(1034%) hue-rotate(5deg) brightness(91%) contrast(86%);
+  cursor: pointer;
+  opacity: 1;
+  margin-right: 5px;
 }
 
 .qb-btn-wrap {
@@ -249,24 +282,36 @@ h1 {
 }
 
 .btn-book-now {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  background: var(--primary-color) !important;
   color: #000 !important;
-  padding: 14px 30px;
+  border: none !important;
   border-radius: 12px;
+  padding: 0 35px;
+  height: 48px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: all 0.3s;
-  text-decoration: none !important;
-  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+.btn-book-now i {
+  margin-right: 10px;
 }
 
 .btn-book-now:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
-  color: #000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.6);
+  background: var(--primary-hover) !important;
 }
+
+
+
+
 
 /* ==================== EXPERIENCES SECTION ==================== */
 .experiences-section {
@@ -932,3 +977,53 @@ h1 {
     padding: 12px 20px;
   }
 }
+/ *   M o b i l e   N a v b a r   F i x   * /  
+ 
+/* Fix Navbar Alignment for Desktop */
+@media (min-width: 768px) {
+  .navbar-inverse .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navbar-inverse .navbar-header {
+    display: flex;
+    align-items: center;
+    float: none;
+  }
+  .navbar-inverse .collapse.navbar-collapse {
+    display: flex !important;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+  }
+  .navbar-inverse .navbar-nav {
+    display: flex;
+    margin: 0;
+    float: none;
+    align-items: center;
+  }
+  .navbar-inverse .navbar-nav.navbar-right {
+    margin-left: auto;
+    float: none !important;
+  }
+  .navbar-inverse .navbar-nav>li {
+    float: none;
+  }
+}
+
+/* Fix Navbar Mobile Visibility */
+@media (max-width: 767px) {
+  .navbar-inverse .navbar-nav.navbar-right {
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+  }
+  .navbar-inverse .navbar-collapse {
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    padding-bottom: 20px;
+  }
+}
+

@@ -20,7 +20,7 @@ $eid=$_SESSION['create_account_logged_in'];
         <li><a href="index.php"title="Home">Home</a></li>
         <li><a href="about.php"title="About">About </a></li>
         <li><a href="rooms.php"title="Rooms">Rooms </a></li>
-		    <li><a href="image gallery.php"title="Gallery">Gallery </a></li>
+		    <li><a href="Image_Gallery.php"title="Gallery">Gallery </a></li>
         <li><a href="blog.php"title="Blog">Blog </a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -30,8 +30,13 @@ $eid=$_SESSION['create_account_logged_in'];
         <?php 
       if($_SESSION['create_account_logged_in']!="")
       {
+          $user_name = "Account";
+          $nav_q = mysqli_query($con, "SELECT name FROM create_account WHERE email='$eid'");
+          if($nav_res = mysqli_fetch_assoc($nav_q)) {
+              $user_name = explode(" ", trim($nav_res['name']))[0]; // Display first name
+          }
         ?>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View Status <span class="caret"></span></a>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user-circle"></i> <?php echo htmlspecialchars($user_name); ?> <span class="caret"></span></a>
         	<ul class="dropdown-menu">
           		<li><a href="profile.php">Profile</a></li>
               <li><a href="order.php">Booking Status</a></li>

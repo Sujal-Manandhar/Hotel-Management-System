@@ -1,34 +1,47 @@
 <?php 
-$i=1;
 $sql=mysqli_query($con,"select * from admin");
 while($res=mysqli_fetch_assoc($sql))
 {
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Hotel.Com</title>
-	<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai" rel="stylesheet">
-</head>
-<body>
-<h1 style="background-color:#ed2553;border-radius:50px;text-align:center;font-family: 'Baloo Bhai', cursive;box-shadow:5px 5px 9px black;text-shadow:2px 2px #fff;">Admin Profile</h1><br>
-<center>
-    <img src="devlop/img2.png"style="width:180px;height:180px;background-color:none;"class="img-circle">
-</center>
-<div class="container"style="width:100%;">
-  <form action="/action_page.php">
-    <div class="form-group">
-      <label for="email">Name:</label>
-       <input type="text" id="username" value="<?php echo $res['username']; ?>" class="form-control" name="name" readonly="readonly"/>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="admin-card text-center">
+            <div style="position: relative; display: inline-block; margin-bottom: 30px;">
+                <img src="../image/clipart/user.png" style="width:150px; height:150px; border: 4px solid var(--primary); padding: 5px; border-radius: 50%;">
+                <div style="position: absolute; bottom: 5px; right: 5px; background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; border: 3px solid var(--sidebar-bg);">
+                    <i class="fa fa-check"></i>
+                </div>
+            </div>
+            
+            <h2 style="color: #fff; margin-bottom: 5px;"><?php echo $res['username']; ?></h2>
+            <p style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85em; margin-bottom: 30px;">System Administrator</p>
+            
+            <div style="text-align: left;">
+                <div class="form-group">
+                    <label>Admin Username</label>
+                    <div class="form-control" style="display: flex; align-items: center; background: rgba(255,255,255,0.02) !important;">
+                        <i class="fa fa-user" style="margin-right: 15px; color: var(--text-secondary);"></i>
+                        <?php echo $res['username']; ?>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>Access Level</label>
+                    <div class="form-control" style="display: flex; align-items: center; background: rgba(255,255,255,0.02) !important;">
+                        <i class="fa fa-shield" style="margin-right: 15px; color: var(--text-secondary);"></i>
+                        Full Superuser Privileges
+                    </div>
+                </div>
+
+                <div style="margin-top: 35px;">
+                    <a href="dashboard.php?option=update_password" class="btn btn-admin btn-block">
+                        <i class="fa fa-key"></i> Change Security Password
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd"value="<?php echo $res['password']; ?>">
-    </div>
-  </form>
 </div>
 <?php 	
 }
 ?>
-</body>
-</html>

@@ -16,7 +16,7 @@ $msg= "<h4 style='color:green;'>feedback sent successfully</h4>";
     <p class="text-justify">A  Crown hotel is an establishment that provides paid lodging on a short-term basis. Facilities provided may range from a modest-quality mattress in a small room to large suites with bigger, higher-quality beds, a dresser, a refrigerator and other kitchen facilities, upholstered chairs, a flat screen television, and en-suite bathrooms. </p><br>
       <center><a href="../about.php" class="btn btn-danger"><b>Read More..</b></a></center><br><br><br>
  <?php
-  include('Social ican.php')
+  include('Social_Icons.php')
 ?>
 	</div>&nbsp;&nbsp;
 	<div class="col-sm-4 text-justify">

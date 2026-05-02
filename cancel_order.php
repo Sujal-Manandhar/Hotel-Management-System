@@ -10,7 +10,7 @@ if (!isset($_SESSION['create_account_logged_in'])) {
 $eid = $_SESSION['create_account_logged_in'];
 $oid = $_GET['order_id'];
 
-$stmt = $con->prepare("DELETE FROM room_booking_details WHERE id = ? AND email = ?");
+$stmt = $con->prepare("UPDATE room_booking_details SET status='Canceled' WHERE id = ? AND email = ?");
 $stmt->bind_param("is", $oid, $eid);
 
 if($stmt->execute())

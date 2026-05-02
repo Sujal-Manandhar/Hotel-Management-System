@@ -34,8 +34,8 @@
                 <input type="Password" class="form-control" id="#"placeholder="Password" required>
             </div>
         <div class="forget text-center"> <!-- Forget Class -->
-        	<a href="Forgot account.php">Forget Your Password</a> <b>|</b>
-        	<a href="Registation form.php">Create New Account</a>
+        	<a href="Forgot_Account.php">Forget Your Password</a> <b>|</b>
+        	<a href="Registration_Form.php">Create New Account</a>
     	</div>
       	</form>
       </div>
