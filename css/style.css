@@ -147,6 +147,31 @@ h1 {
   box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.3) !important;
 }
 
+input[type="date"].form-control {
+  color: #fff;
+  text-align: left;
+}
+
+input[type="date"].form-control::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.8);
+  cursor: pointer;
+}
+
+input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
+  filter: invert(1) brightness(1);
+}
+
+select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c5a059' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 15px center !important;
+  background-size: 16px !important;
+  padding-right: 40px !important;
+}
+
 select.form-control option {
   background-color: #fff !important;
   color: #111827 !important;
